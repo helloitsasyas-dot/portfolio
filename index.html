@@ -1,0 +1,994 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Anastasia (Asya) S — creative producer and brand strategist based in Umbria, Italy.">
+<meta property="og:title" content="Anastasia (Asya) S">
+<meta property="og:description" content="Creative producer and brand strategist based in Umbria, Italy.">
+<meta property="og:url" content="https://itsasyas.vercel.app">
+<meta property="og:image" content="https://itsasyas.vercel.app/asya-thumb.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27%3E%3Crect width=%2716%27 height=%2716%27 fill=%27%23f3e14a%27/%3E%3C/svg%3E">
+<title>Anastasia (Asya) S</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400&family=Instrument+Serif:ital@1&display=swap">
+<style>
+/* Layout: white sheet. Three-part top line, empty field, then a small caption row and the name set edge to edge across the bottom. */
+:root {
+  /* black sheet, white type */
+  --blue: #111110;
+  --on-blue: #ffffff;
+  --on-blue-muted: #8c8c88;
+  --bg: #111110;
+  --fg: #ffffff;
+  --muted: #8c8c88;
+  --rule: #2c2d2c;
+  --ink: #ffffff;
+  color-scheme: dark;
+  --green: #f3e14a;
+  --green-ink: #141413;
+  /* playful accent set: electric blue, grass green, sun yellow, hot pink, tomato, grape */
+  --dot-orange: #f04a32; --dot-pink: #e8336f; --dot-lime: #6fdd45; --dot-violet: #2f6cf3; --dot-red: #f3e14a; --dot-grape: #7b3fd2;
+  --sans: "Geist", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --serif: "Instrument Serif", "Times New Roman", Georgia, serif;
+  --mono: "Geist Mono", ui-monospace, Menlo, monospace;
+  --gutter: clamp(16px, 3.2vw, 48px);
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body {
+  position: relative;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--sans); font-size: 17px; line-height: 1.45;
+  padding-inline: var(--gutter); margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--green); color: var(--green-ink); }
+a { color: inherit; text-decoration: none; }
+a:hover, .toggle:hover > span:first-child { background: var(--green); color: var(--green-ink); box-shadow: 3px 0 0 var(--green), -3px 0 0 var(--green); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
+
+/* ---------- first screen ---------- */
+.screen { color: var(--on-blue); }
+.screen .top .mid, .caption .muted { color: var(--on-blue-muted); }
+.screen .top .mid a:first-child { color: var(--on-blue); }
+.screen {
+  min-height: 100svh;
+  display: flex; flex-direction: column; justify-content: space-between;
+  padding-block: clamp(18px, 2.4vw, 32px) clamp(12px, 1.6vw, 24px);
+}
+.top {
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; align-items: flex-start;
+  font-size: 15px;
+}
+.top .mid { color: var(--muted); display: flex; align-items: center; justify-content: flex-start; gap: 18px; }
+.top .mid > a { text-align: center; }
+.top .mid > .lang + .play { margin-left: -12px; }
+.top .mid a { display: inline-block; }
+.top .mid a:first-child { color: var(--fg); }
+.top .right { justify-self: end; margin-left: auto; display: flex; flex-direction: column; align-items: flex-end; gap: 14px; }
+.thumb { width: clamp(180px, 17vw, 260px); height: auto; aspect-ratio: 1; object-fit: cover; display: block; }
+@media (max-width: 640px) { .thumb { width: 140px; } }
+.thumb { filter: grayscale(1); }
+@media (min-width: 641px) { .top .right { padding-top: 5px; } }
+.top .right a { border-bottom: 1px solid currentColor; padding-bottom: 2px; }
+.top .right a:hover { border-color: transparent; }
+.top .mid a:hover { background: var(--green); color: var(--green-ink); box-shadow: 3px 0 0 var(--green), -3px 0 0 var(--green); }
+.foot { display: grid; gap: clamp(4px, 1vw, 12px); }
+.foot .statement { margin: 0 0 clamp(28px, 4vw, 64px); }
+.screen { padding-bottom: clamp(36px, 5vw, 72px); }
+.caption { display: flex; justify-content: space-between; gap: 16px; font-size: 15px; }
+.caption .muted { color: var(--muted); }
+.clock { font-variant-numeric: tabular-nums; }
+.caption { flex-wrap: wrap; align-items: baseline; }
+.where-now { margin-left: auto; text-align: right; white-space: nowrap; }
+.bigname {
+  margin: 0; white-space: nowrap; line-height: .82; display: inline-flex; align-items: center; gap: .1em; justify-self: start;
+  font-weight: 400; letter-spacing: -0.045em; font-size: 12vw;
+  padding-bottom: .16em;
+}
+.bigname .caps { font-family: var(--sans); text-transform: uppercase; }
+.bigname .ital { font-family: var(--serif); font-style: italic; letter-spacing: -0.01em; font-size: .38em; line-height: 1; padding-inline: .15em; }
+
+.portrait {
+  position: relative; align-self: center;
+  width: clamp(130px, 15vw, 230px); margin: 24px 0;
+  cursor: crosshair; outline: none;
+}
+.portrait img {
+  display: block; width: 100%; aspect-ratio: 2 / 3; object-fit: cover;
+  opacity: 0; transform: scale(.97); transform-origin: 50% 55%;
+  transition: opacity .35s ease, transform .6s cubic-bezier(.2, 1, .3, 1);
+}
+.portrait:hover, .portrait:focus-visible { z-index: 5; }
+@media (min-width: 1024px) { .portrait { width: clamp(66px, 7.5vw, 115px); } }
+.portrait:hover img, .portrait:focus-visible img { opacity: 1; transform: scale(1.9); }
+.portrait .stk {
+  position: absolute; pointer-events: none; display: block;
+  opacity: 0; transform: scale(.4) rotate(var(--r, 0deg));
+  transition: opacity .3s ease, transform .55s cubic-bezier(.2, 1.5, .4, 1);
+  transition-delay: var(--sd, 0ms);
+}
+.portrait:hover .stk, .portrait:focus-visible .stk { opacity: 1; transform: scale(1) rotate(var(--r, 0deg)); }
+.stk.smile { width: 62%; top: -38%; left: -98%; --r: -6deg; --sd: 60ms; }
+.portrait .dot { right: -18%; bottom: -10%; width: 38%; z-index: -1; }
+
+.dots { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 1; }
+.dot { position: absolute; aspect-ratio: 1; border-radius: 0; }
+/* lines (section borders) sit lowest, squares float over them, text sits on top */
+.screen, .intro, section, footer { position: relative; }
+.intro > *, section > *, footer > * { position: relative; z-index: 2; }
+.screen > .dots { z-index: 1; }
+.dots.float { position: fixed; inset: 0; z-index: 1; }
+.screen > :not(.dots) { position: relative; z-index: 2; }
+.dot { background: currentColor; border: 0; box-sizing: border-box; }
+.o { color: var(--dot-orange); } .p { color: var(--dot-pink); } .l { color: var(--dot-lime); }
+.v { color: var(--dot-violet); } .r { color: var(--dot-red); }
+
+/* dots: hidden until the visitor scrolls, hovers, taps or tabs, then drift */
+.dot {
+  opacity: 0; transform: scale(.4);
+  transition: opacity .5s ease, transform .7s cubic-bezier(.2, 1.4, .4, 1);
+  transition-delay: var(--d, 0ms);
+}
+.revealed .dot {
+  opacity: 1; transform: translate(var(--fx, 0px), var(--fy, 0px));
+  transition: opacity .5s ease, transform 1.1s cubic-bezier(.15, .8, .25, 1);
+  transition-delay: var(--d, 0ms), 0ms;
+  animation: drift var(--dur, 14s) ease-in-out var(--d, 0ms) infinite alternate, dspin var(--sp, 9s) linear var(--d, 0ms) infinite var(--sdir, normal);
+}
+.dot:nth-child(2n) { --dur: 18s; --dx: -1; }
+.dot:nth-child(3n) { --dur: 11s; }
+.dot:nth-child(2n) { --sp: 13s; --sdir: reverse; }
+.dot:nth-child(3n) { --sp: 6s; }
+@keyframes dspin { to { rotate: 360deg; } }
+@keyframes drift {
+  0%   { translate: 0 0; }
+  33%  { translate: calc(var(--dx, 1) * 34px) -22px; }
+  66%  { translate: calc(var(--dx, 1) * -18px) 28px; }
+  100% { translate: calc(var(--dx, 1) * 26px) 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dot { transform: none; transition: opacity .4s ease; }
+  .revealed .dot { animation: none; }
+  .portrait img, .portrait .stk { transform: none; }
+}
+
+.intro { padding-block: clamp(48px, 8vw, 120px); border-top: 1px solid var(--rule); }
+.statement {
+  margin: 0; max-width: 22ch;
+  font-weight: 400; letter-spacing: -0.03em; line-height: 1.02;
+  font-size: clamp(56px, 7.2vw, 112px); text-wrap: balance;
+}
+/* glyph stays inline text (so it never splits from its word or comma); the visible, animated copy floats on top */
+.statement .g {
+  display: inline; position: relative; color: transparent;
+  font-family: var(--serif); font-style: normal; font-size: .78em; vertical-align: .22em; line-height: 1;
+}
+.statement .g::after {
+  content: attr(data-c); position: absolute; left: 0; top: 0; color: var(--fg); display: inline-block;
+}
+.g.spin::after { animation: spin 9s linear infinite; }
+.g.spin.rev::after { animation-direction: reverse; animation-duration: 12s; }
+.g.bob::after { animation: bob 2.8s ease-in-out infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes bob { 0%, 100% { transform: translateY(0) rotate(-6deg); } 50% { transform: translateY(-.12em) rotate(6deg); } }
+@media (prefers-reduced-motion: reduce) { .statement .g::after { animation: none; } }
+.statement em { font-family: var(--serif); font-style: italic; letter-spacing: -0.01em; font-size: 1.08em; }
+.statement sup { font-size: .3em; letter-spacing: 0; vertical-align: 1.6em; margin-left: .3em; font-family: var(--sans); }
+
+@media (max-width: 640px) {
+  .top, .caption { font-size: 14px; }
+}
+
+/* ---------- ledger ---------- */
+section {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+  border-top: 1px solid var(--rule);
+  padding-block: clamp(22px, 2.6vw, 38px);
+}
+section > h2 {
+  margin: 0; font-weight: 400; font-size: clamp(22px, 2.3vw, 36px);
+  letter-spacing: -0.025em; line-height: 1.15;
+}
+.toggle {
+  all: unset; cursor: pointer; display: inline-flex; gap: .6em; align-items: baseline;
+}
+.toggle:focus, .toggle:focus-visible { outline: none; }
+.sign { font-family: var(--sans); font-weight: 500; font-size: .9em; line-height: 1; color: var(--fg); -webkit-text-stroke: .07em currentColor; width: 1ch; display: inline-block; text-align: center; }
+.rows { display: grid; gap: clamp(26px, 2.8vw, 40px); min-width: 0; }
+.row { display: grid; gap: 4px; max-width: 62ch; line-height: 1.28; }
+.when {
+  font-family: var(--sans); font-size: 15px; color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.role { font-family: var(--sans); font-size: clamp(22px, 2.3vw, 36px); letter-spacing: -0.025em; line-height: 1.15; }
+.where { color: var(--muted); font-size: 15px; }
+.row p { margin: 8px 0 0; line-height: 1.38; font-size: 15px; }
+
+.plain { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; font-size: clamp(16px, 1.3vw, 20px); letter-spacing: -0.01em; line-height: 1.45; }
+.plain span { color: var(--muted); }
+
+.contact-line { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px 20px; }
+.email { font-size: clamp(16px, 1.3vw, 20px); letter-spacing: -0.02em; user-select: all; overflow-wrap: anywhere; }
+.copy {
+  font: inherit; font-family: var(--sans); font-size: 15px; font-weight: 400;
+  background: none; color: var(--fg); border: 1px solid var(--fg);
+  border-radius: 0; padding: 6px 14px; cursor: pointer;
+}
+.copy:hover { background: var(--green); color: var(--green-ink); border-color: var(--green); }
+
+footer {
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px;
+  padding-block: 24px 40px; color: var(--muted);
+  font-family: var(--mono); font-size: 13px;
+}
+
+@media (max-width: 640px) {
+  section, footer { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) { .when, .where, .row p { font-size: 14px; } }
+@media (max-width: 640px) {
+  .screen { min-height: 68svh; gap: 72px; }
+  .portrait { margin: 8px 0; width: 65px; }
+  .statement { font-size: 28px; line-height: 1.08; max-width: none; text-wrap: wrap; text-align: justify; text-align-last: left; hyphens: auto; }
+}
+.bigname, .statement, section > h2, .role, .sign { color: var(--ink); }
+.mail { position: relative; z-index: 2; border-top: 1px solid var(--rule); padding-block: clamp(32px, 5vw, 64px) 8px; display: grid; gap: 10px; }
+.bigmail {
+  all: unset; cursor: copy; justify-self: start; white-space: nowrap;
+  font-family: var(--sans); font-weight: 400; letter-spacing: -0.045em; line-height: .9;
+  font-size: 9vw; color: var(--ink); padding-bottom: .08em;
+  display: grid;
+}
+.bigmail > span { display: block; width: max-content; }
+.bigmail .at { font-family: var(--serif); font-style: italic; letter-spacing: 0; margin-right: .02em; }
+.wave { display: inline-block; transform-origin: 40% 90%; animation: wave 2.4s ease-in-out infinite; }
+@keyframes wave { 0%, 60%, 100% { transform: rotate(0); } 10% { transform: rotate(16deg); } 20% { transform: rotate(-8deg); } 30% { transform: rotate(14deg); } 40% { transform: rotate(-4deg); } 50% { transform: rotate(10deg); } }
+@media (prefers-reduced-motion: reduce) { .wave { animation: none; } }
+.say { font-family: var(--serif); font-style: italic; font-size: clamp(44px, 4.6vw, 72px); letter-spacing: -0.01em; line-height: 1; color: var(--ink); }
+.say .wave { color: var(--green); width: .72em; height: .84em; vertical-align: -.02em; margin-left: .12em; overflow: visible; }
+.bigmail:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+a:hover, a:hover *, .toggle:hover > span:first-child, .copy:hover { color: var(--green-ink) !important; }
+/* language switch: pill with a lime knob that hops across */
+.lang {
+  all: unset; position: relative; cursor: pointer; display: grid; grid-template-columns: 1fr 1fr;
+  box-sizing: border-box; width: 88px; height: 32px; border: 1.5px solid var(--fg); border-radius: 999px;
+  font-family: var(--sans); font-size: 13px; letter-spacing: .04em; color: var(--fg);
+}
+.lang-opt { display: grid; place-items: center; position: relative; z-index: 2; transition: color .3s ease; }
+.lang-knob {
+  position: absolute; z-index: 1; top: 3px; bottom: 3px; left: 3px; width: calc(50% - 4.5px); border-radius: 999px;
+  background: #ffffff; box-sizing: border-box;
+  transition: transform .3s ease;
+}
+.lang[aria-checked="true"] .lang-knob { transform: translateX(calc(100% + 3px)); }
+.lang[aria-checked="false"] .lang-opt:first-child, .lang[aria-checked="true"] .lang-opt:nth-child(2) { color: #111110; }
+.lang:focus-visible { outline: 2px solid var(--green); outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) { .lang-knob { transition: none; } }
+@media (max-width: 640px) {
+  .top .mid { display: grid; grid-template-columns: auto auto; justify-content: start; column-gap: 1.6em; row-gap: 12px; }
+  .top .mid .lang { grid-column: 1; }
+  .top .mid .play.mini { grid-column: 2; justify-self: start; }
+}
+/* hover colours from the accent set */
+.top .mid a:nth-of-type(1):hover { background: var(--dot-lime); box-shadow: 3px 0 0 var(--dot-pink), -3px 0 0 var(--dot-pink); }
+.top .mid a:nth-of-type(2):hover { background: var(--dot-pink); box-shadow: 3px 0 0 var(--dot-pink), -3px 0 0 var(--dot-pink); }
+.top .right a:hover { background: var(--dot-red); box-shadow: 3px 0 0 var(--dot-red), -3px 0 0 var(--dot-red); }
+#work .toggle:hover > span:first-child { background: var(--dot-orange); box-shadow: 3px 0 0 var(--dot-orange), -3px 0 0 var(--dot-orange); }
+#services .toggle:hover > span:first-child { background: var(--dot-lime); box-shadow: 3px 0 0 var(--dot-lime), -3px 0 0 var(--dot-lime); }
+#languages .toggle:hover > span:first-child { background: var(--dot-red); box-shadow: 3px 0 0 var(--dot-red), -3px 0 0 var(--dot-red); }
+#work .sign { color: var(--dot-orange); } #services .sign { color: var(--dot-lime); } #languages .sign { color: var(--dot-red); }
+@media (min-width: 1024px) { .statement { font-size: clamp(28px, 3.6vw, 56px); max-width: 28ch; line-height: 1.08; } }
+/* full-bleed grainy b&w photo behind the first screen */
+.screen { isolation: isolate; }
+.screen::before {
+  content: ""; position: absolute; z-index: 0; top: 0; bottom: 0;
+  left: calc(-1 * var(--gutter)); right: calc(-1 * var(--gutter));
+  background: #111110;
+}
+.screen > .dots { z-index: 1; }
+/* dotted photo, revealed on hover */
+.ghost {
+  position: absolute; z-index: 1; left: 50%; top: 40%; transform: translate(-50%, -50%);
+  height: 46%; aspect-ratio: 2 / 3; margin: 0; cursor: crosshair; outline: none;
+}
+.ghost img {
+  width: 100%; height: 100%; display: block; object-fit: cover;
+  opacity: 0; transform: scale(.94); transition: opacity .45s ease, transform .7s cubic-bezier(.2, 1, .3, 1);
+}
+.ghost:hover img, .ghost:focus-visible img { opacity: 1; transform: none; }
+.screen > .ghost { position: absolute; z-index: 1; }
+@media (max-width: 640px) { .ghost { height: 40%; top: 42%; } }
+@media (prefers-reduced-motion: reduce) { .ghost img { transform: none; } }
+/* sections rise in as they scroll into view */
+.reveal-on .rv { opacity: 0; transform: translateY(48px); transition: opacity .8s ease, transform 1s cubic-bezier(.2, .8, .2, 1); transition-delay: var(--rd, 0ms); }
+.reveal-on .rv.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .reveal-on .rv { opacity: 1; transform: none; transition: none; } }
+/* name builds in letter by letter on load */
+.bigname .ch { display: inline-block; }
+.name-anim .bigname .ch { opacity: 0; transform: translateY(.35em) rotate(4deg); }
+.name-anim.name-in .bigname .ch {
+  opacity: 1; transform: none;
+  transition: opacity .6s ease, transform .9s cubic-bezier(.2, .9, .2, 1);
+  transition-delay: calc(var(--i) * 55ms + 120ms);
+}
+.name-anim .caption { opacity: 0; transition: opacity .8s ease .9s; }
+.name-anim.name-in .caption { opacity: 1; }
+/* items inside an opened section arrive one by one */
+.reveal-on .sub-rv { opacity: 0; transform: translateY(26px); }
+.reveal-on .sub-rv.in { opacity: 1; transform: none; transition: opacity .6s ease, transform .8s cubic-bezier(.2, .8, .2, 1); transition-delay: var(--cd, 0ms); }
+@media (prefers-reduced-motion: reduce) { .name-anim .bigname .ch, .name-anim .caption, .reveal-on .sub-rv { opacity: 1 !important; transform: none !important; } }
+/* breathing room between the three groups: intro, accordions, contact */
+.intro { margin-bottom: clamp(24px, 3vw, 48px); padding-bottom: clamp(24px, 3vw, 48px); }
+.mail { margin-top: clamp(56px, 8vw, 140px); border-top: 0; }
+
+.statement .s2 { display: block; font-size: max(.5em, 17px); line-height: 1.2; margin-top: .9em; max-width: 46ch; }
+.socials { display: flex; flex-wrap: wrap; gap: 10px; margin-top: clamp(18px, 2.4vw, 32px); }
+.pill {
+  display: inline-flex; align-items: center; gap: .5em; padding: .55em 1.1em .6em;
+  border: 1.5px solid var(--fg); border-radius: 999px; font-size: 16px; line-height: 1; color: var(--fg);
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+}
+.socials .pill:nth-child(1):hover { background: var(--dot-pink); border-color: var(--dot-pink); box-shadow: none; }
+.socials .pill:nth-child(2):hover { background: var(--dot-violet); border-color: var(--dot-violet); box-shadow: none; color: #fff !important; }
+/* contact panel: dark by default, flips to light paper while the email is hovered */
+html { background: #111110; }
+body { background: #111110; }
+.intro { border-top: 0; }
+.mail, footer {
+  background: #111110; margin-inline: calc(-1 * var(--gutter)); padding-inline: var(--gutter);
+  transition: background-color .45s ease, color .45s ease;
+}
+.mail { padding-top: clamp(48px, 7vw, 110px); }
+.mail .say, .mail .bigmail, footer, .pill { transition: color .45s ease, border-color .45s ease, background-color .45s ease; }
+.pill { border-color: var(--fg); }
+/* job description opens when the title is clicked */
+button.role { all: unset; cursor: pointer; display: inline-flex; align-items: baseline; gap: .45em; font-family: var(--sans); font-size: clamp(22px, 2.3vw, 36px); letter-spacing: -0.025em; line-height: 1.15; color: var(--ink); }
+button.role:focus-visible { outline: 2px solid var(--fg); outline-offset: 4px; }
+button.role:hover { color: var(--dot-orange); }
+.jsign { font-size: .6em; color: var(--dot-orange); display: inline-block; transition: transform .3s ease; }
+button.role[aria-expanded="true"] .jsign { transform: rotate(45deg); }
+.jd.show { animation: jdin .45s ease both; }
+@keyframes jdin { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .jd.show { animation: none; } }
+.toggle .sign { transition: transform .35s cubic-bezier(.3, 1.4, .5, 1); }
+.toggle[aria-expanded="true"] .sign { transform: rotate(45deg); }
+/* job titles: short, balanced lines, no single word left hanging */
+button.role { display: block; max-width: 15ch; text-wrap: balance; text-align: left; }
+#work button.role[aria-controls="jd3"], #work button.role[aria-controls="jd4"], #work button.role[aria-controls="jd5"], #work button.role[aria-controls="jd6"] { max-width: none; white-space: nowrap; font-size: min(clamp(22px, 2.3vw, 36px), 5.1vw); }
+html, body { overflow-x: clip; }
+#work button.role { font-size: min(clamp(22px, 2.3vw, 36px), 5.1vw); }
+/* mini game */
+.play { cursor: pointer; font: inherit; font-size: 16px; line-height: 1; background: none; }
+.play .psq { display: inline-block; width: 1.2em; height: 1.2em; color: currentColor; flex: none; transition: transform .4s ease, color .2s ease; }
+.play:hover .psq { color: currentColor; }
+.play:hover .psq { transform: scale(1.1); }
+.play:hover { background: var(--dot-lime); border-color: var(--dot-lime); color: #111110 !important; }
+
+.game { position: fixed; inset: 0; z-index: 50; background: #111110; display: grid; place-items: center; padding: 16px; }
+.g-wrap { display: grid; gap: 12px; justify-items: center; width: min(100%, 320px); }
+.g-head { width: 100%; max-width: 320px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 12px; font-size: 15px; color: #fff; }
+.g-head > .g-score { grid-column: 1; grid-row: 1; justify-self: start; } .g-head > #game-title { grid-column: 2; grid-row: 1; justify-self: center; } .g-head > .g-x { grid-column: 3; grid-row: 1; justify-self: end; }
+.g-head #game-title { font-family: var(--sans); font-style: normal; font-size: 20px; }
+.g-score { color: var(--muted); font-variant-numeric: tabular-nums; } .g-score b { color: #fff; font-weight: 500; }
+.g-x { all: unset; cursor: pointer; width: 34px; height: 34px; display: grid; place-items: center; color: #fff; font-size: 20px; margin-right: -8px; }
+.g-x:hover { color: #fff; opacity: .7; }
+.g-x:focus, .g-x:focus-visible { outline: none; color: #fff; }
+#g-board { width: 100%; max-width: 320px; height: auto; aspect-ratio: 1; max-height: 62svh; border: 0; outline: none; background: #0b0b0a; image-rendering: pixelated; }
+.g-msg { margin: 0; min-height: 1.3em; color: #fff; font-size: 15px; text-align: center; }
+.g-pad { display: grid; grid-template-columns: repeat(4, 64px); gap: 10px; }
+.game { touch-action: none; }
+.g-pad button { all: unset; cursor: pointer; height: 48px; display: grid; place-items: center; background: #1f1f1d; border-radius: 12px; color: #fff; font-size: 20px; user-select: none; touch-action: manipulation; }
+.g-pad button:active { background: #fff; color: #111110; }
+.g-help { margin: 0; color: var(--muted); font-size: 13px; text-align: center; }
+.g-note { margin: 6px 0 0; padding: 12px 14px; border: 1.5px solid #4a4a46; border-radius: 12px; max-width: 320px; box-sizing: border-box; width: 100%; color: #8c8c88; font-family: var(--sans); font-style: normal; font-size: 14px; line-height: 1.4; text-align: center; text-wrap: balance; }
+.play.mini { font-size: 13px; padding: .5em .9em .55em; height: 32px; box-sizing: border-box; }
+#g-board { touch-action: none; }
+@media (hover: hover) and (pointer: fine) { .g-pad { display: none; } }
+
+/* mobile burger menu */
+.burger, .mbar, .top .mid a.only-m { display: none; }
+.top .mid a.only-m[href="#contact"] { display: none !important; }
+.menu-open .screen > .top { z-index: 40; }
+.menu-open .screen { z-index: 60; }
+@media (max-width: 640px) {
+  .burger {
+    all: unset; cursor: pointer; display: inline-flex; align-items: center; gap: 10px;
+    position: relative; z-index: 31; color: var(--fg); font-size: 15px; height: 32px;
+  }
+  .bars { width: 22px; height: 12px; position: relative; display: block; }
+  .bars i { position: absolute; left: 0; right: 0; height: 1.5px; background: currentColor; transition: transform .35s ease, top .35s ease; }
+  .bars i:first-child { top: 1px; } .bars i:last-child { top: 9px; }
+  .menu-open .bars i:first-child { top: 5px; transform: rotate(45deg); }
+  .menu-open .bars i:last-child { top: 5px; transform: rotate(-45deg); }
+  .top { display: grid; grid-template-columns: 1fr auto; grid-template-rows: auto auto 1fr; column-gap: 12px; row-gap: 14px; align-items: start; }
+  .burger { grid-column: 1; grid-row: 1; }
+  .mbar { grid-column: 1; grid-row: 2; display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+  .top .right { grid-column: 2; grid-row: 1 / -1; }
+  .top .right > a { font-size: 15px; }
+  .top .mid {
+    position: fixed; inset: 0; z-index: 30; background: #111110; color: var(--fg);
+    display: flex !important; flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: 18px;
+    padding: calc(env(safe-area-inset-top, 0px) + 84px) var(--gutter) 32px;
+    opacity: 0; visibility: hidden; transform: translateY(-12px);
+    transition: opacity .35s ease, transform .45s cubic-bezier(.2, .8, .2, 1), visibility 0s linear .45s;
+  }
+  .menu-open .top .mid { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+  .top .mid a { display: block; font-size: 26px; line-height: 1.15; letter-spacing: -.015em; color: var(--fg); min-width: 0 !important; text-align: left !important; }
+  .top .mid a.only-m { display: block; }
+  .top .mid a[href="#contact"] { margin-top: 10px; font-family: var(--serif); font-style: italic; }
+
+  .menu-open { overflow: hidden; }
+}
+.top .mid > *, .mbar > * { flex: none; }
+.lang { min-width: 88px; }
+/* bottom pills match the top ones */
+.socials .pill { font-size: 13px; height: 32px; box-sizing: border-box; padding: 0 .9em; border-width: 1.5px; }
+/* extra room under an opened section before the next line */
+section:has(.toggle[aria-expanded="true"]) { padding-bottom: clamp(44px, 5vw, 76px); }
+
+/* services split by audience, with keyword pins */
+.svc { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 48px clamp(32px, 3vw, 56px); align-items: start; }
+.svc-h { margin: 0 0 22px; font-size: clamp(22px, 2vw, 30px); font-weight: 400; letter-spacing: -0.02em; line-height: 1.15; color: var(--fg); }
+.svc-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 22px; }
+.svc-list li { display: grid; gap: 6px; }
+.svc-t { font-size: clamp(18px, 1.5vw, 22px); letter-spacing: -0.01em; line-height: 1.25; }
+.svc-st { font-size: 16px; line-height: 1.3; }
+.svc-sum { margin: -8px 0 20px; font-size: 15px; line-height: 1.3; color: var(--muted); max-width: 46ch; }
+.svc-tabs { display: flex; flex-wrap: wrap; gap: 8px; }
+.svc-tab { height: 32px; box-sizing: border-box; padding: 0 .9em; border: 1.5px solid var(--fg); border-radius: 999px; background: none; color: var(--fg); font: inherit; font-size: 13px; cursor: pointer; white-space: nowrap; transition: background-color .2s ease, color .2s ease; }
+.svc-tab:hover, .svc-tab[aria-expanded="true"] { background: var(--dot-lime); border-color: var(--dot-lime); color: #111110; }
+.svc-sum + .svc-cre { margin-top: 26px; }
+.svc-tabs + .svc-list, .svc-g > .svc-list[id] { margin-top: 26px; }
+.svc-d { font-size: 15px; line-height: 1.3; color: var(--muted); max-width: 46ch; }
+.pins { display: flex; flex-wrap: wrap; align-content: flex-start; gap: 6px; margin-top: 4px; }
+.pin { display: inline-flex; align-items: center; height: 24px; padding: 0 .75em; font-size: 12px; border-radius: 999px; background: transparent; border: 1px solid #3a3a38; color: var(--muted); white-space: nowrap; }
+
+/* desktop: line up titles, summaries, buttons and panels across the two columns */
+@media (min-width: 1024px) {
+  .svc { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(4, auto); row-gap: 0; }
+  .svc-g { display: grid; grid-row: span 4; grid-template-rows: subgrid; align-content: start; }
+  .svc-g > .svc-h, .svc-g > .svc-sum, .svc-g > .svc-tabs { align-self: start; }
+  .svc-g > .svc-list { grid-row: 4; align-self: start; align-content: start; }
+}
+
+/* big screens: social pills grow and stack in the empty space next to the email */
+@media (min-width: 1024px) {
+  .mail { grid-template-columns: auto 1fr; column-gap: clamp(32px, 5vw, 96px); }
+  .mail > .say, .mail > .bigmail { grid-column: 1; }
+  .mail > .socials { grid-column: 2; grid-row: 1 / span 2; align-self: end; flex-direction: column; flex-wrap: nowrap; align-items: flex-end; gap: clamp(10px, 1vw, 16px); margin: 0; }
+  .socials .pill { font-size: clamp(18px, 1.7vw, 30px); height: auto; padding: .5em 1.1em; border-width: 2px; justify-content: center; letter-spacing: -0.02em; }
+  .socials .pill .psq { width: 1em; height: 1em; }
+}
+
+/* contact pills drift like the floating squares while hovered */
+@keyframes pfloat {
+  0%   { translate: 0 0; rotate: 0deg; }
+  25%  { translate: calc(var(--px, 1) * 10px) -8px; rotate: calc(var(--px, 1) * 4deg); }
+  50%  { translate: calc(var(--px, 1) * -6px) 6px; rotate: calc(var(--px, 1) * -3deg); }
+  75%  { translate: calc(var(--px, 1) * 8px) 4px; rotate: calc(var(--px, 1) * 2deg); }
+  100% { translate: 0 0; rotate: 0deg; }
+}
+.socials .pill:hover, #play-top:hover { animation: pfloat 2.4s ease-in-out infinite; }
+.socials .pill:nth-child(2) { --px: -1; }
+@media (prefers-reduced-motion: reduce) { .socials .pill:hover, #play-top:hover { animation: none; } }
+
+</style>
+</head>
+<body>
+<div class="dots float" aria-hidden="true">
+  <span class="dot g2" style="--d:500ms;top:22%;left:93%;width:10px;color:var(--dot-grape)"></span>
+  <span class="dot o" style="--d:650ms;top:70%;left:3%;width:11px"></span>
+</div>
+
+<div class="dots" aria-hidden="true">
+  <span class="dot v" style="--d:210ms;top:62%;left:95%;width:13px"></span>
+  <span class="dot l" style="--d:390ms;top:86%;left:96%;width:15px"></span>
+  <span class="dot p" style="--d:480ms;top:74%;left:2%;width:12px"></span>
+</div>
+
+<div class="screen">
+  <div class="dots" aria-hidden="true">
+    <span class="dot o" style="--d:210ms;top:30%;left:4%;width:12px"></span>
+    <span class="dot p" style="--d:300ms;top:15%;left:74%;width:16px"></span>
+    <span class="dot l" style="--d:390ms;top:44%;left:85%;width:24px"></span>
+    <span class="dot r" style="--d:480ms;top:66%;left:20%;width:11px"></span>
+    <span class="dot v" style="--d:570ms;top:20%;left:30%;width:14px"></span>
+    <span class="dot g2" style="--d:660ms;top:58%;left:68%;width:12px;color:var(--dot-grape)"></span>
+  </div>
+  <div class="top">
+    <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu"><span class="bars" aria-hidden="true"><i></i><i></i></span><span class="b-lbl">Menu</span></button>
+    <div class="mbar"></div>
+    <nav class="mid" id="menu" aria-label="Sections"><a href="#services">Services</a> <a href="#work">Work</a> <a href="#languages" class="only-m">Languages &amp; education</a> <a href="#contact" class="only-m">Send me a message</a><button class="lang" id="lang" type="button" role="switch" aria-checked="false" aria-label="Switch language between English and Italian">
+    <span class="lang-opt">EN</span><span class="lang-opt">IT</span><span class="lang-knob" aria-hidden="true"></span>
+  </button><button class="pill play mini" id="play-top" type="button"><svg class="psq" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19.5h10a3.75 3.75 0 0 0 0-7.5h-2a3.75 3.75 0 0 1 0-7.5h6"/><circle cx="19" cy="4.5" r="2" fill="currentColor" stroke="none"/><path d="M21 4.5h2"/></svg>Play a game</button></nav>
+    <span class="right"><a href="#contact">Send me a message</a><img class="thumb" src="asya-thumb.jpg" alt="Photo of Asya" width="140" height="140"></span>
+  </div>
+  <div class="foot">
+    <p class="statement" lang="en">Hello<span class="g spin" aria-hidden="true" data-c="✦&#xFE0E;">✦&#xFE0E;</span>, I&rsquo;m a <em>creative producer</em>&nbsp;<span class="g bob" aria-hidden="true" data-c="☺&#xFE0E;">☺&#xFE0E;</span> and <em>brand strategist</em> based in Umbria<span class="g spin rev" aria-hidden="true" data-c="✳&#xFE0E;">✳&#xFE0E;</span>, Italy.<span class="s2"> I turn research into positioning, and positioning into work that ships, for brands, studios and creators.</span></p>
+    <div class="caption">
+      <span class="muted">EN/IT/RU</span>
+      <span class="where-now">Umbria, IT <span class="clock" id="clock"></span></span>
+    </div>
+    <h1 class="bigname" id="bigname" aria-label="Anastasia (Asya) S"><span class="caps"><span class="ch" style="--i:0" aria-hidden="true">A</span><span class="ch" style="--i:1" aria-hidden="true">n</span><span class="ch" style="--i:2" aria-hidden="true">a</span><span class="ch" style="--i:3" aria-hidden="true">s</span><span class="ch" style="--i:4;margin-right:-.06em" aria-hidden="true">t</span><span class="ch" style="--i:5" aria-hidden="true">a</span><span class="ch" style="--i:6" aria-hidden="true">s</span><span class="ch" style="--i:7" aria-hidden="true">i</span><span class="ch" style="--i:8" aria-hidden="true">a</span></span><span class="ital ch" style="--i:10" aria-hidden="true">asya</span><span class="caps ch" style="--i:12" aria-hidden="true">S</span></h1>
+  </div>
+</div>
+
+
+
+<section id="services">
+  <h2><button class="toggle" type="button" id="services-btn" aria-expanded="false" aria-controls="services-body"><span>Services</span><span class="sign" aria-hidden="true">+</span></button></h2>
+  <div class="svc" id="services-body" hidden>
+    <div class="svc-g">
+      <h3 class="svc-h">For design studios &amp; start-ups</h3>
+      <p class="svc-sum">Strategy, production and digital product under one roof: I find what makes a brand matter, run the production that brings it to life, and build the digital products around it.</p>
+      <div class="svc-tabs" role="group" aria-label="Skill sets"><button class="svc-tab" type="button" aria-expanded="false" aria-controls="bs-body">Brand strategy</button><button class="svc-tab" type="button" aria-expanded="false" aria-controls="pr-body">Production</button><button class="svc-tab" type="button" aria-expanded="false" aria-controls="dp-body">Digital product development</button></div>
+      <ul class="svc-list" id="bs-body" hidden>
+        <li><span class="svc-st">Value proposition &amp; fit</span><span class="svc-d">What makes the brand unique: its emotional or technical value proposition, and whether there is product–market fit.</span><span class="pins"><span class="pin">UVP</span><span class="pin">Product–market fit</span></span></li>
+        <li><span class="svc-st">Benchmarking &amp; directions</span><span class="svc-d">Competitor benchmarking and the potential directions the brand could take.</span><span class="pins"><span class="pin">Benchmarking</span><span class="pin">Brand directions</span></span></li>
+        <li><span class="svc-st">Audience &amp; customer</span><span class="svc-d">Who the audience, the customer and the follower are, their customer journey and how they make decisions.</span><span class="pins"><span class="pin">CJM</span><span class="pin">Audience vs customer</span><span class="pin">Decision-making</span></span></li>
+        <li><span class="svc-st">Channels &amp; entry points</span><span class="svc-d">The best channels for marketing, sales and promotion, and where people first come in.</span><span class="pins"><span class="pin">Channels</span><span class="pin">Entry points</span></span></li>
+        <li><span class="svc-st">From findings to visuals</span><span class="svc-d">Turning the findings into visual directions with art directors: communication strategy and moodboards.</span><span class="pins"><span class="pin">Communication strategy</span><span class="pin">Moodboards</span></span></li>
+      </ul>
+      <ul class="svc-list" id="pr-body" hidden>
+        <li><span class="svc-st">Presales &amp; pitches</span><span class="svc-d">The full cycle starts here: presales, pitches and the first ideas.</span><span class="pins"><span class="pin">Presales</span><span class="pin">Pitches</span><span class="pin">Ideation</span></span></li>
+        <li><span class="svc-st">Team &amp; providers</span><span class="svc-d">Putting together the team and providers, setting timelines and handling client accounting.</span><span class="pins"><span class="pin">Team building</span><span class="pin">Providers</span><span class="pin">Timelines</span><span class="pin">Client accounting</span></span></li>
+        <li><span class="svc-st">Creative direction &amp; delivery</span><span class="svc-d">Creative direction and management. The jack of all trades who makes sure things actually happen and we deliver.</span><span class="pins"><span class="pin">Creative direction</span><span class="pin">Management</span><span class="pin">Delivery</span></span></li>
+      </ul>
+      <ul class="svc-list" id="dp-body" hidden>
+        <li><span class="svc-st">Landing pages &amp; flows</span><span class="svc-d">Landing pages and end-to-end design flows.</span><span class="pins"><span class="pin">Landing pages</span><span class="pin">Design flows</span></span></li>
+        <li><span class="svc-st">Research &amp; testing</span><span class="svc-d">UX/CX research, usability testing and UX reviews.</span><span class="pins"><span class="pin">UX/CX research</span><span class="pin">Usability testing</span><span class="pin">UX review</span></span></li>
+        <li><span class="svc-st">Components &amp; copy</span><span class="svc-d">Organising component libraries, copy and storytelling.</span><span class="pins"><span class="pin">Component library</span><span class="pin">Copy</span><span class="pin">Storytelling</span></span></li>
+        <li><span class="svc-st">AI &amp; no-code building</span><span class="svc-d">Vibecoding, building products in Notion, and keeping design in sync between Figma and Claude.</span><span class="pins"><span class="pin">Vibecoding</span><span class="pin">Notion</span><span class="pin">Figma ↔ Claude</span></span></li>
+      </ul>
+    </div>
+    <div class="svc-g">
+      <h3 class="svc-h">For creators &amp; influencers</h3>
+      <p class="svc-sum">For creators who already have an audience and want to turn it into a real brand and a business.</p>
+      <div class="svc-tabs" role="group" aria-label="Skill sets"><button class="svc-tab" type="button" aria-expanded="false" aria-controls="cb-body">Brand &amp; product</button><button class="svc-tab" type="button" aria-expanded="false" aria-controls="cc-body">Content &amp; campaigns</button><button class="svc-tab" type="button" aria-expanded="false" aria-controls="cf-body">Funnels &amp; metrics</button></div>
+      <ul class="svc-list" id="cb-body" hidden>
+        <li><span class="svc-st">Your real brand</span><span class="svc-d">You have an audience but don’t know how to monetise it. We find your real brand: how you’re different from others and where you bring value.</span><span class="pins"><span class="pin">Monetisation</span><span class="pin">Positioning</span><span class="pin">UVP</span></span></li>
+        <li><span class="svc-st">Your product</span><span class="svc-d">You have an idea you could sell, like a course, lectures, an app or a programme, but don’t know how to build it, test it and run it.</span><span class="pins"><span class="pin">Courses</span><span class="pin">Programmes</span><span class="pin">Apps</span><span class="pin">Testing</span></span></li>
+      </ul>
+      <ul class="svc-list" id="cc-body" hidden>
+        <li><span class="svc-st">Content growth</span><span class="svc-d">You’re not sure how to grow your content pillars or which formats to adopt to keep growing.</span><span class="pins"><span class="pin">Content pillars</span><span class="pin">Formats</span><span class="pin">Growth</span></span></li>
+        <li><span class="svc-st">Brand &amp; campaigns</span><span class="svc-d">You need a hand with brand management and organising campaigns.</span><span class="pins"><span class="pin">Brand management</span><span class="pin">Campaigns</span></span></li>
+      </ul>
+      <ul class="svc-list" id="cf-body" hidden>
+        <li><span class="svc-st">Funnels</span><span class="svc-d">You don’t know how to build a funnel that turns followers into customers, for both B2C and B2B clients.</span><span class="pins"><span class="pin">Follower → customer</span><span class="pin">B2C funnels</span><span class="pin">B2B funnels</span></span></li>
+        <li><span class="svc-st">Metrics &amp; KPIs</span><span class="svc-d">You don’t know which metrics and KPIs to adopt to review your progress.</span><span class="pins"><span class="pin">Metrics</span><span class="pin">KPIs</span><span class="pin">Progress reviews</span></span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <h2><button class="toggle" type="button" id="work-btn" aria-expanded="false" aria-controls="work-body"><span>Work</span><span class="sign" aria-hidden="true">+</span></button></h2>
+  <div class="rows" id="work-body" hidden>
+    <div class="row">
+      <span class="when">2026 – Now</span>
+      <button class="role" type="button" aria-expanded="false" aria-controls="jd1">Creative Producer &amp; Brand Strategist</button>
+      <span class="where">StudioGusto©, Perugia</span>
+      <p id="jd1" class="jd" hidden>End-to-end creative production for Italian and international clients: brand research, positioning, strategy and execution across branding and social media.</p>
+    </div>
+    <div class="row">
+      <span class="when">2025 – Now</span>
+      <button class="role" type="button" aria-expanded="false" aria-controls="jd2">Creative Producer</button>
+      <span class="where">Freelance, working with creators</span>
+      <p id="jd2" class="jd" hidden>Research, funnels, service, product and content strategy for creators and founders, including Hanna Gets Hired (130K+ audience) and Leyla Nees.</p>
+    </div>
+    <div class="row">
+      <span class="when">2022 – 2025</span>
+      <button class="role" type="button" aria-expanded="false" aria-controls="jd3">Designer &amp; Production Director</button>
+      <span class="where">Humbleteam</span>
+      <p id="jd3" class="jd" hidden>Ran the full production team: weekly goals, resourcing and assignments. Led presales, upsells and objection handling across 100+ startup clients, including the Y Combinator portfolio, Heineken and Visa. Shaped client strategy through ICP research, A/B testing and UVP definition, with quality oversight across branding and marketing work.</p>
+    </div>
+    <div class="row">
+      <span class="when">2020 – 2022</span>
+      <button class="role" type="button" aria-expanded="false" aria-controls="jd4">Designer &amp; Product Lead</button>
+      <span class="where">Rosatom</span>
+      <p id="jd4" class="jd" hidden>Usability research and testing, UX/UI design, strategic design direction and dev team grooming.</p>
+    </div>
+    <div class="row">
+      <span class="when">2019 – 2020</span>
+      <button class="role" type="button" aria-expanded="false" aria-controls="jd5">Designer &amp; CX Specialist</button>
+      <span class="where">AIC Design©</span>
+      <p id="jd5" class="jd" hidden>Original benchmarking, usability research and testing, client proposals and copywriting.</p>
+    </div>
+    <div class="row">
+      <span class="when">2018 – 2019</span>
+      <button class="role" type="button" aria-expanded="false" aria-controls="jd6">Product &amp; UX Lead</button>
+      <span class="where">Movemeon, London</span>
+      <p id="jd6" class="jd" hidden>UX/UI design and development of the main product and its marketing assets.</p>
+    </div>
+  </div>
+</section>
+
+
+<section id="languages">
+  <h2><button class="toggle" type="button" id="languages-btn" aria-expanded="false" aria-controls="languages-body"><span>Languages &amp; education</span><span class="sign" aria-hidden="true">+</span></button></h2>
+  <ul class="plain" id="languages-body" hidden>
+    <li>English <span>C2</span></li>
+    <li>Italian <span>C2</span></li>
+    <li>Russian <span>Native</span></li>
+    <li>MSc Research Methods <span>UCL London, 2016</span></li>
+  </ul>
+</section>
+
+<div class="mail" id="contact">
+  <span class="say">Say <svg class="wave" viewBox="0 0 48 56" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 30 V12 a3.2 3.2 0 0 1 6.4 0 V27 M21.4 26 V7 a3.2 3.2 0 0 1 6.4 0 V26 M27.8 25 V9.5 a3.2 3.2 0 0 1 6.4 0 V27 M34.2 27 V15 a3.2 3.2 0 0 1 6.4 0 V34 c0 11 -7 18 -16 18 c-7 0 -11 -4 -15 -10 L4 32 a3.4 3.4 0 0 1 5.2 -4.2 L15 33"/><path d="M41 8 c2.5 1.5 4 4 4.4 7 M43 3 c3 2 5 5 5.4 9" stroke-width="1.6"/></svg></span>
+  <button class="bigmail" id="email" type="button" title="Click to copy" data-mail="hello.itsasyas@gmail.com" aria-label="hello.itsasyas@gmail.com, click to copy"><span>hello.itsasyas</span><span><i class="at">@</i>gmail.com</span></button>
+  <div class="socials">
+    <a class="pill" href="https://www.instagram.com/why_egyptianreg/" target="_blank" rel="noopener">Instagram</a>
+    <a class="pill" href="https://www.linkedin.com/in/anashevtsova/" target="_blank" rel="noopener">LinkedIn</a>
+    <button class="pill play" id="play" type="button"><svg class="psq" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19.5h10a3.75 3.75 0 0 0 0-7.5h-2a3.75 3.75 0 0 1 0-7.5h6"/><circle cx="19" cy="4.5" r="2" fill="currentColor" stroke="none"/><path d="M21 4.5h2"/></svg>Play a game</button>
+  </div>
+</div>
+
+
+<div class="game" id="game" hidden role="dialog" aria-modal="true" aria-labelledby="game-title">
+  <div class="g-wrap">
+    <div class="g-head">
+      <span id="game-title">Snake</span>
+      <span class="g-score"><span id="g-lbl">Score</span> <b id="g-score">0</b></span>
+      <button class="g-x" id="g-close" type="button" aria-label="Close game">✕</button>
+    </div>
+    <canvas id="g-board" width="360" height="360" aria-label="Game board"></canvas>
+    <p class="g-msg" id="g-msg"></p>
+    <div class="g-pad" aria-label="Controls">
+      <button type="button" data-k="left" aria-label="Left">←</button>
+      <button type="button" data-k="up" aria-label="Up">↑</button>
+      <button type="button" data-k="down" aria-label="Down">↓</button>
+      <button type="button" data-k="right" aria-label="Right">→</button>
+    </div>
+    <p class="g-help" id="g-help">Arrows to move · ↑ rotate · Space drop · Esc close</p>
+    <p class="g-note" id="g-note"></p>
+  </div>
+</div>
+
+<footer>
+  <span>© 2026 Anastasia (Asya) S</span>
+  <span>Designed and developed by me with Claude Code, deployed on Vercel.</span>
+</footer>
+
+<script>
+(() => {
+  const b = document.getElementById('burger'), m = document.getElementById('menu'); if (!b) return;
+  const lbl = b.querySelector('.b-lbl');
+  /* on phones the language switch and Play live outside the menu */
+  const bar = document.querySelector('.mbar'), sw = document.getElementById('lang'), pl = document.getElementById('play-top');
+  const mq = matchMedia('(max-width: 640px)');
+  const place = () => { if (mq.matches) { bar.append(sw, pl); } else { m.append(sw, pl); } };
+  place(); mq.addEventListener('change', place);
+  const set = (open) => {
+    document.documentElement.classList.toggle('menu-open', open);
+    b.setAttribute('aria-expanded', open);
+    const it = document.documentElement.lang === 'it';
+    lbl.textContent = open ? (it ? 'Chiudi' : 'Close') : 'Menu';
+  };
+  b.addEventListener('click', () => set(b.getAttribute('aria-expanded') !== 'true'));
+  m.addEventListener('click', (e) => { if (e.target.closest('a, .play')) set(false); });
+  addEventListener('keydown', (e) => { if (e.key === 'Escape') set(false); });
+  matchMedia('(max-width: 640px)').addEventListener('change', (q) => { if (!q.matches) set(false); });
+  new MutationObserver(() => set(b.getAttribute('aria-expanded') === 'true')).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+})();
+</script>
+<script>
+document.addEventListener('click', (e) => {
+  const b = e.target.closest('button.role'); if (!b) return;
+  const d = document.getElementById(b.getAttribute('aria-controls'));
+  const open = b.getAttribute('aria-expanded') !== 'true';
+  b.setAttribute('aria-expanded', open); d.hidden = !open; d.classList.toggle('show', open);
+});
+</script>
+<script>
+(() => {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const root = document.documentElement;
+  root.classList.add('name-anim');
+  const go = () => requestAnimationFrame(() => root.classList.add('name-in'));
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(go); else go();
+  setTimeout(go, 1200);
+})();
+</script>
+<script>
+(() => {
+  /* squares lean towards the cursor, each with its own pull */
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const dots = [...document.querySelectorAll('.dot')];
+  const off = new Map(dots.map(d => [d, { x: 0, y: 0 }]));
+  const max = 260;
+  addEventListener('mousemove', (e) => {
+    dots.forEach((d, i) => {
+      const o = off.get(d), r = d.getBoundingClientRect();
+      const cx = r.left + r.width / 2 - o.x, cy = r.top + r.height / 2 - o.y;
+      const k = 0.18 + (i % 5) * 0.08;
+      let dx = (e.clientX - cx) * k, dy = (e.clientY - cy) * k;
+      const len = Math.hypot(dx, dy);
+      if (len > max) { dx *= max / len; dy *= max / len; }
+      o.x = dx; o.y = dy;
+      d.style.setProperty('--fx', dx.toFixed(1) + 'px');
+      d.style.setProperty('--fy', dy.toFixed(1) + 'px');
+    });
+  }, { passive: true });
+})();
+</script>
+<script>
+
+(() => {
+  const reveal = () => {
+    document.body.classList.add('revealed');
+    ['scroll','mousemove','touchstart','keydown','wheel'].forEach(e => removeEventListener(e, reveal));
+  };
+  ['scroll','mousemove','touchstart','keydown','wheel'].forEach(e => addEventListener(e, reveal, { passive: true }));
+})();
+(() => {
+  const el = document.getElementById('clock');
+  const fmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Rome', hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  const tick = () => { el.textContent = fmt.format(new Date()); };
+  tick(); setInterval(tick, 1000);
+
+  const name = document.getElementById('bigname');
+  const fit = () => {
+    name.style.fontSize = '100px';
+    const w = name.parentElement.clientWidth;
+    name.style.fontSize = (100 * w / name.getBoundingClientRect().width * 0.995) + 'px';
+    document.documentElement.style.setProperty('--asya', getComputedStyle(name.querySelector('.ital')).fontSize);
+  };
+  const mail = document.getElementById('email');
+  const fitMail = () => {
+    mail.style.fontSize = '100px';
+    const ps = getComputedStyle(mail.parentElement);
+    const w = mail.parentElement.clientWidth - parseFloat(ps.paddingLeft) - parseFloat(ps.paddingRight);
+    const widest = Math.max(...[...mail.children].map(c => c.getBoundingClientRect().width));
+    const scale = innerWidth >= 1024 ? 0.5 : 1;
+    mail.style.fontSize = (100 * w / widest * 0.995 * scale) + 'px';
+  };
+  fit(); fitMail(); addEventListener('resize', () => { fit(); fitMail(); });
+  if (document.fonts) document.fonts.ready.then(fitMail);
+  if (document.fonts) document.fonts.ready.then(fit);
+})();
+(() => {
+  const set = (btn, open) => {
+    btn.setAttribute('aria-expanded', open);
+    document.getElementById(btn.getAttribute('aria-controls')).hidden = !open;
+    btn.querySelector('.sign').textContent = '+';
+    if (open && document.documentElement.classList.contains('reveal-on')) {
+      const kids = [...document.getElementById(btn.getAttribute('aria-controls')).children];
+      kids.forEach(k => { k.classList.add('sub-rv'); k.classList.remove('in'); });
+      requestAnimationFrame(() => requestAnimationFrame(() => kids.forEach((k, i) => {
+        k.style.setProperty('--cd', (i * 140) + 'ms'); k.classList.add('in');
+      })));
+    }
+  };
+  document.querySelectorAll('.toggle').forEach(btn =>
+    btn.addEventListener('click', () => set(btn, btn.getAttribute('aria-expanded') !== 'true')));
+  document.querySelectorAll('.top a[href^="#"]').forEach(a => a.addEventListener('click', () => {
+    const btn = document.getElementById(a.getAttribute('href').slice(1) + '-btn');
+    if (btn) set(btn, true);
+  }));
+})();
+
+document.getElementById('email').addEventListener('click', async (e) => {
+  const el = e.currentTarget;
+  try { await navigator.clipboard.writeText(el.dataset.mail); el.title = 'Copied'; }
+  catch {
+    const r = document.createRange(); r.selectNodeContents(el);
+    const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r);
+  }
+});
+</script>
+<script>
+/* English / Italian switch: swaps every text fragment, remembers the choice */
+(() => {
+  const IT = {"Work": "Lavoro", "Services": "Servizi", "Send me a message": "Scrivimi", "Brand strategy, Research, Production": "Strategia di brand, Ricerca, Produzione", ", Italy.": ", Italia.", "I turn": "Trasformo la", "I turn research into positioning, and positioning into work that ships, for brands, studios and creators.": "Trasformo la ricerca in posizionamento, e il posizionamento in progetti che arrivano sul mercato, per brand, studi e creator.", "Creative Producer & Brand Strategist": "Produttrice creativa e\u00a0brand strategist", "Creative Producer": "Produttrice creativa", "Designer & Production Director": "Designer e\u00a0direttrice di\u00a0produzione", "Designer & Product Lead": "Designer e\u00a0responsabile di\u00a0prodotto", "Designer & CX Specialist": "Designer e\u00a0specialista CX", "Product & UX Lead": "Responsabile di\u00a0prodotto e\u00a0UX", "creative producer": "produttrice creativa", "brand strategist": "strategist di brand", "Play a game": "Gioca", "Play": "Gioca", "Hello": "Ciao", ", I’m a": ", sono una", "and": "e", "based in Umbria": "con base in Umbria", ", Italy. I turn": ", Italia. Trasformo la", "research": "ricerca", "into": "in", "positioning": "posizionamento", ", and positioning into": ", e il posizionamento in", "work that ships": "progetti che arrivano sul mercato", ", for brands, studios and": ", per brand, studi e", "creators": "creator", "2026 – Now": "2026 – oggi", "2025 – Now": "2025 – oggi", "2022 – 2025": "2022 – 2025", "2020 – 2022": "2020 – 2022", "2019 – 2020": "2019 – 2020", "2018 – 2019": "2018 – 2019", "Creative Producer, startups & creators": "Creative Producer per startup e creator", "Freelance, working with creators": "Freelance, collaboro con creator", "Movemeon, London": "Movemeon, Londra", "End-to-end creative production for Italian and international clients: brand research, positioning, strategy and execution across branding and social media.": "Produzione creativa end-to-end per clienti italiani e internazionali: ricerca di brand, posizionamento, strategia ed esecuzione tra branding e social media.", "Research, funnels, service, product and content strategy for creators and founders, including Hanna Gets Hired (130K+ audience) and Leyla Nees.": "Ricerca, funnel, strategia di servizio, prodotto e contenuti per creator e founder, tra cui Hanna Gets Hired (oltre 130K follower) e Leyla Nees.", "Ran the full production team: weekly goals, resourcing and assignments. Led presales, upsells and objection handling across 100+ startup clients, including the Y Combinator portfolio, Heineken and Visa. Shaped client strategy through ICP research, A/B testing and UVP definition, with quality oversight across branding and marketing work.": "Ho guidato l’intero team di produzione: obiettivi settimanali, risorse e assegnazioni. Ho gestito prevendita, upselling e obiezioni per oltre 100 startup, tra cui il portfolio Y Combinator, Heineken e Visa. Ho definito la strategia dei clienti con ricerca ICP, A/B test e UVP, curando la qualità di branding e marketing.", "Usability research and testing, UX/UI design, strategic design direction and dev team grooming.": "Ricerca e test di usabilità, design UX/UI, direzione strategica del design e coordinamento del team di sviluppo.", "Original benchmarking, usability research and testing, client proposals and copywriting.": "Benchmarking originali, ricerca e test di usabilità, proposte per i clienti e copywriting.", "UX/UI design and development of the main product and its marketing assets.": "Design UX/UI e sviluppo del prodotto principale e dei materiali di marketing.", "Brand research & benchmarking": "Ricerca di brand e benchmarking", "Positioning & brand strategy": "Posizionamento e strategia di brand", "Personal brands for creators": "Personal branding per creator", "Fractional creative production": "Produzione creativa part-time", "Pitch & presales strategy": "Strategia di pitch e prevendita", "Italian market entry": "Ingresso nel mercato italiano", "Languages & education": "Lingue e formazione", "English": "Inglese", "Italian": "Italiano", "Russian": "Russo", "Native": "Madrelingua", "MSc Research Methods": "MSc in Metodi di ricerca", "UCL London, 2016": "UCL Londra, 2016", "Say": "Say ciao", "Designed and developed by me with Claude Code, deployed on Vercel.": "Progettato e sviluppato da me con Claude Code, pubblicato su Vercel.", "Brand & product": "Brand e prodotto", "Content & campaigns": "Contenuti e campagne", "Funnels & metrics": "Funnel e metriche", "For creators & influencers": "Per creator e influencer", "For creators who already have an audience and want to turn it into a real brand and a business.": "Per creator che hanno già un pubblico e vogliono trasformarlo in un vero brand e in un business.", "Your real brand": "Il tuo vero brand", "You have an audience but don’t know how to monetise it. We find your real brand: how you’re different from others and where you bring value.": "Hai un pubblico ma non sai come monetizzarlo. Troviamo il tuo vero brand: cosa ti distingue dagli altri e dove porti valore.", "Monetisation": "Monetizzazione", "Your product": "Il tuo prodotto", "You have an idea you could sell, like a course, lectures, an app or a programme, but don’t know how to build it, test it and run it.": "Hai l’idea di un prodotto da vendere, come un corso, delle lezioni, un’app o un programma, ma non sai come costruirlo, testarlo e gestirlo.", "Courses": "Corsi", "Programmes": "Programmi", "Apps": "App", "Testing": "Test", "Content growth": "Crescita dei contenuti", "You’re not sure how to grow your content pillars or which formats to adopt to keep growing.": "Non sai come sviluppare i tuoi pilastri di contenuto o quali formati adottare per continuare a crescere.", "Formats": "Formati", "Growth": "Crescita", "Brand & campaigns": "Brand e campagne", "You need a hand with brand management and organising campaigns.": "Ti serve una mano con la gestione del brand e l’organizzazione delle campagne.", "Brand management": "Gestione del brand", "Campaigns": "Campagne", "Funnels": "Funnel", "You don’t know how to build a funnel that turns followers into customers, for both B2C and B2B clients.": "Non sai come costruire un funnel che trasformi i follower in clienti, sia B2C sia B2B.", "Follower → customer": "Da follower a cliente", "B2C funnels": "Funnel B2C", "B2B funnels": "Funnel B2B", "Metrics & KPIs": "Metriche e KPI", "You don’t know which metrics and KPIs to adopt to review your progress.": "Non sai quali metriche e KPI adottare per valutare i tuoi progressi.", "Metrics": "Metriche", "Progress reviews": "Revisione dei progressi", "Strategy, production and digital product under one roof: I find what makes a brand matter, run the production that brings it to life, and build the digital products around it.": "Strategia, produzione e prodotto digitale sotto lo stesso tetto: scopro cosa rende un brand rilevante, guido la produzione che lo porta in vita e costruisco i prodotti digitali intorno a lui.", "Production": "Produzione", "Digital product development": "Sviluppo di prodotti digitali", "Presales & pitches": "Prevendita e pitch", "The full cycle starts here: presales, pitches and the first ideas.": "Il ciclo completo parte da qui: prevendita, pitch e le prime idee.", "Presales": "Prevendita", "Pitches": "Pitch", "Ideation": "Ideazione", "Team & providers": "Team e fornitori", "Putting together the team and providers, setting timelines and handling client accounting.": "Mettere insieme team e fornitori, definire le tempistiche e gestire la contabilità clienti.", "Team building": "Composizione del team", "Providers": "Fornitori", "Timelines": "Tempistiche", "Client accounting": "Contabilità clienti", "Creative direction & delivery": "Direzione creativa e consegna", "Creative direction and management. The jack of all trades who makes sure things actually happen and we deliver.": "Direzione creativa e gestione. La persona tuttofare che fa succedere le cose e garantisce la consegna.", "Creative direction": "Direzione creativa", "Management": "Gestione", "Delivery": "Consegna", "Landing pages & flows": "Landing page e flussi", "Landing pages and end-to-end design flows.": "Landing page e flussi di design end-to-end.", "Landing pages": "Landing page", "Design flows": "Flussi di design", "Research & testing": "Ricerca e test", "UX/CX research, usability testing and UX reviews.": "Ricerca UX/CX, test di usabilità e revisioni UX.", "UX/CX research": "Ricerca UX/CX", "Usability testing": "Test di usabilità", "UX review": "Revisione UX", "Components & copy": "Componenti e copy", "Organising component libraries, copy and storytelling.": "Organizzazione delle librerie di componenti, copy e storytelling.", "Component library": "Libreria di componenti", "AI & no-code building": "AI e no-code", "Vibecoding, building products in Notion, and keeping design in sync between Figma and Claude.": "Vibecoding, sviluppo di prodotti in Notion e sincronizzazione del design tra Figma e Claude.", "For design studios & start-ups": "Per studi di design e startup", "For creators": "Per creator", "Brand strategy": "Strategia di brand", "Value proposition & fit": "Proposta di valore e fit", "What makes the brand unique: its emotional or technical value proposition, and whether there is product–market fit.": "Cosa rende unico il brand: la sua proposta di valore emotiva o tecnica, e se c’è product–market fit.", "Benchmarking & directions": "Benchmarking e direzioni", "Competitor benchmarking and the potential directions the brand could take.": "Benchmarking dei competitor e le possibili direzioni del brand.", "Audience & customer": "Pubblico e cliente", "Who the audience, the customer and the follower are, their customer journey and how they make decisions.": "Chi sono il pubblico, il cliente e il follower, il loro customer journey e come prendono decisioni.", "Channels & entry points": "Canali e punti di ingresso", "The best channels for marketing, sales and promotion, and where people first come in.": "I canali migliori per marketing, vendite e promozione, e i punti in cui le persone entrano per la prima volta.", "From findings to visuals": "Dai dati alle immagini", "Turning the findings into visual directions with art directors: communication strategy and moodboards.": "Tradurre i risultati in direzioni visive con gli art director: strategia di comunicazione e moodboard.", "Personal brand & positioning": "Personal brand e posizionamento", "What you stand for, who it is for, and how you say it.": "Cosa rappresenti, per chi, e come lo racconti.", "Offers & funnels": "Offerta e funnel", "Services, products and the funnel that takes followers to customers.": "Servizi, prodotti e il funnel che trasforma i follower in clienti.", "Content strategy": "Strategia di contenuti", "Content pillars, formats and the channels that fit your audience.": "Pilastri dei contenuti, formati e i canali giusti per il tuo pubblico.", "Creative production": "Produzione creativa", "Hands-on production for launches, campaigns and shoots.": "Produzione operativa per lanci, campagne e shooting.", "Audience vs customer": "Pubblico vs cliente", "Decision-making": "Processo decisionale", "Channels": "Canali", "Entry points": "Punti di ingresso", "Communication strategy": "Strategia di comunicazione", "Moodboards": "Moodboard", "Brand directions": "Direzioni di brand", "Positioning": "Posizionamento", "Offer design": "Design dell’offerta", "Content pillars": "Pilastri dei contenuti", "Production": "Produzione", "Launches": "Lanci"};
+  const btn = document.getElementById('lang');
+  const nodes = [];
+  const walk = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+    acceptNode: n => n.parentElement.closest('script, style, svg') ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT
+  });
+  while (walk.nextNode()) {
+    const n = walk.currentNode, key = n.nodeValue.replace(/[\u2060\u00a0]/g, ' ').trim();
+    if (IT[key]) nodes.push({ n, en: n.nodeValue, it: n.nodeValue.replace(/[^\u2060\u00a0 ].*[^\u2060\u00a0 ]|[^\u2060\u00a0 ]/, IT[key]) });
+  }
+  const mail = document.getElementById('email');
+  const apply = (lang) => {
+    nodes.forEach(o => { o.n.nodeValue = lang === 'it' ? o.it : o.en; });
+    document.documentElement.lang = lang;
+    const st = document.querySelector('.statement'); if (st) st.lang = lang;
+    btn.setAttribute('aria-checked', lang === 'it');
+    if (mail) mail.title = lang === 'it' ? 'Clicca per copiare' : 'Click to copy';
+    const A = [
+      ['nav.mid', 'aria-label', 'Sections', 'Sezioni'],
+      ['#lang', 'aria-label', 'Switch language between English and Italian', 'Cambia lingua tra inglese e italiano'],
+      ['.thumb', 'alt', 'Photo of Asya', 'Foto di Asya'],
+      ['#email', 'aria-label', 'hello.itsasyas@gmail.com, click to copy', 'hello.itsasyas@gmail.com, clicca per copiare'],
+    ];
+    A.forEach(([sel, at, en, it]) => { const el = document.querySelector(sel); if (el) el.setAttribute(at, lang === 'it' ? it : en); });
+    document.title = 'Anastasia (Asya) S';
+    try { localStorage.setItem('asya-lang', lang); } catch (e) {}
+    window.dispatchEvent(new Event('resize'));
+  };
+  const lockWidths = () => {
+    /* each nav link reserves the width of its longer translation (text centred in it),
+       so the switch never shifts when the language changes and the row stays tight */
+    const nav = document.querySelector('.top .mid');
+    const links = [...nav.querySelectorAll('a:not(.only-m)')];
+    nav.style.width = '';
+    links.forEach(a => a.style.minWidth = '');
+    if (matchMedia('(max-width: 640px)').matches) return;
+    const cur = document.documentElement.lang === 'it' ? 'it' : 'en';
+    const w = links.map(a => a.getBoundingClientRect().width);
+    nodes.forEach(o => { o.n.nodeValue = cur === 'it' ? o.en : o.it; });
+    links.forEach((a, i) => { w[i] = Math.max(w[i], a.getBoundingClientRect().width); });
+    nodes.forEach(o => { o.n.nodeValue = cur === 'it' ? o.it : o.en; });
+    links.forEach((a, i) => { a.style.minWidth = Math.ceil(w[i]) + 'px'; });
+  };
+  addEventListener('resize', lockWidths);
+  lockWidths();
+  if (document.fonts) document.fonts.ready.then(lockWidths);
+  let start = 'en';
+  try { start = localStorage.getItem('asya-lang') || 'en'; } catch (e) {}
+  if (start === 'it') apply('it');
+  btn.addEventListener('click', () => apply(btn.getAttribute('aria-checked') === 'true' ? 'en' : 'it'));
+})();
+</script>
+<script>
+/* reveal sections with a delay as they enter the screen */
+(() => {
+  if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const items = [...document.querySelectorAll('.intro, section, .mail, footer')];
+  document.documentElement.classList.add('reveal-on');
+  items.forEach(el => el.classList.add('rv'));
+  let queue = 0;
+  const io = new IntersectionObserver((entries) => {
+    entries.filter(e => e.isIntersecting).forEach((e) => {
+      e.target.style.setProperty('--rd', (150 + queue++ * 140) + 'ms');
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+      setTimeout(() => { queue = Math.max(0, queue - 1); }, 400);
+    });
+  }, { rootMargin: '0px 0px -12% 0px', threshold: 0.05 });
+  items.forEach(el => io.observe(el));
+  addEventListener('scroll', () => {
+    if (innerHeight + scrollY >= document.documentElement.scrollHeight - 4) items.forEach(el => el.classList.add('in'));
+  }, { passive: true });
+  document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', () => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { t.classList.add('in'); }
+  }));
+})();
+</script>
+<script>
+/* Snake, made of the site's squares: eat the coloured squares, grow, don't bite yourself */
+(() => {
+  const N = 18, S = 20;
+  const game = document.getElementById('game'), cv = document.getElementById('g-board'), cx = cv.getContext('2d');
+  cv.width = N * S; cv.height = N * S;
+  const scoreEl = document.getElementById('g-score'), msg = document.getElementById('g-msg');
+  const cs = getComputedStyle(document.documentElement);
+  const COL = ['--dot-orange', '--dot-pink', '--dot-lime', '--dot-violet', '--dot-red', '--dot-grape'].map(v => cs.getPropertyValue(v).trim() || '#fff');
+  let snake, dir, next, food, score, timer, over, speed, lastFocus, started;
+  const T = (en, it) => document.documentElement.lang === 'it' ? it : en;
+  const D = { up: [0, -1], down: [0, 1], left: [-1, 0], right: [1, 0] };
+  const place = () => {
+    let f; do { f = { x: Math.floor(Math.random() * N), y: Math.floor(Math.random() * N), c: Math.floor(Math.random() * COL.length) }; }
+    while (snake.some(p => p.x === f.x && p.y === f.y)); food = f;
+  };
+  const sq = (x, y, c, pad = 1) => { cx.fillStyle = c; cx.fillRect(x * S + pad, y * S + pad, S - pad * 2, S - pad * 2); };
+  const draw = () => {
+    cx.fillStyle = '#0b0b0a'; cx.fillRect(0, 0, cv.width, cv.height);
+    sq(food.x, food.y, COL[food.c], 3);
+    snake.forEach((p, i) => sq(p.x, p.y, i === 0 ? '#ffffff' : COL[(p.c ?? 0) % COL.length]));
+  };
+  const step = () => {
+    if (over || !started) return;
+    dir = next;
+    const h = { x: snake[0].x + D[dir][0], y: snake[0].y + D[dir][1] };
+    if (h.x < 0 || h.y < 0 || h.x >= N || h.y >= N || snake.some(p => p.x === h.x && p.y === h.y)) {
+      over = true; clearInterval(timer);
+      msg.textContent = T('Game over. Tap a direction or press Enter to play again', 'Game over. Tocca una freccia o premi Invio per rigiocare');
+      draw(); return;
+    }
+    snake.unshift(h);
+    if (h.x === food.x && h.y === food.y) {
+      h.c = food.c; score += 10; scoreEl.textContent = score; place();
+      speed = Math.max(70, 160 - snake.length * 2); restart();
+    } else snake.pop();
+    snake.forEach((p, i) => { if (i && p.c === undefined) p.c = i % COL.length; });
+    draw();
+  };
+  const restart = () => { clearInterval(timer); timer = setInterval(step, speed); };
+  const start = () => {
+    const m = Math.floor(N / 2);
+    snake = [{ x: m, y: m, c: 0 }, { x: m - 1, y: m, c: 1 }, { x: m - 2, y: m, c: 2 }];
+    dir = next = 'right'; score = 0; over = false; started = false; speed = 160; scoreEl.textContent = 0;
+    msg.textContent = T('Press an arrow or swipe to start', 'Premi una freccia o scorri per iniziare');
+    place(); draw(); clearInterval(timer);
+  };
+  const turn = (k) => {
+    if (over) { start(); return; }
+    if (!D[k]) return;
+    const opp = { up: 'down', down: 'up', left: 'right', right: 'left' };
+    if (k === opp[dir] && snake.length > 1) return;
+    next = k;
+    if (!started) { started = true; msg.textContent = ''; restart(); }
+  };
+  const keys = { ArrowUp: 'up', ArrowDown: 'down', ArrowLeft: 'left', ArrowRight: 'right', w: 'up', s: 'down', a: 'left', d: 'right', Enter: 'enter' };
+  const onKey = (e) => {
+    if (e.key === 'Escape') { close(); return; }
+    const k = keys[e.key]; if (!k) return;
+    e.preventDefault(); if (k === 'enter') { if (over) start(); } else turn(k);
+  };
+  const open = () => {
+    lastFocus = document.activeElement;
+    document.getElementById('game-title').textContent = 'Snake';
+    document.getElementById('g-lbl').textContent = T('Score', 'Punti');
+    const touch = matchMedia('(hover: none), (pointer: coarse)').matches;
+    document.getElementById('g-help').textContent = touch
+      ? T('Swipe anywhere (up, down, left, right) or tap the arrows to steer', 'Scorri ovunque (su, giù, sinistra, destra) o tocca le frecce per girare')
+      : T('Arrow keys to steer · Esc close', 'Frecce per girare · Esc chiude');
+    document.getElementById('g-close').setAttribute('aria-label', T('Close game', 'Chiudi gioco'));
+    document.getElementById('g-note').textContent = T(
+      'My mother bought me my first Nokia when I was 9 years old. The most important part of that Nokia was the Snake game, which made me fall in love with all things design and computers. Please come back later: I’m adding progressive levels of difficulty and golden eggs.',
+      'Mia madre mi ha regalato il mio primo Nokia quando avevo 9 anni. La parte più importante di quel Nokia era il gioco Snake, che mi ha fatto innamorare di tutto ciò che è design e computer. Torna più tardi: sto aggiungendo livelli di difficoltà progressivi e uova d’oro.');
+    game.hidden = false; document.body.style.overflow = 'hidden';
+    addEventListener('keydown', onKey); start(); document.getElementById('g-close').focus();
+  };
+  const close = () => { clearInterval(timer); game.hidden = true; document.body.style.overflow = ''; removeEventListener('keydown', onKey); if (lastFocus) lastFocus.focus(); };
+  document.getElementById('play').addEventListener('click', open);
+  const pt = document.getElementById('play-top'); if (pt) pt.addEventListener('click', open);
+  document.getElementById('g-close').addEventListener('click', close);
+  /* backdrop taps are used for steering, so closing is via ✕ or Esc */
+  document.querySelectorAll('.g-pad button').forEach(b => b.addEventListener('click', () => turn(b.dataset.k)));
+  let sx = 0, sy = 0;
+  let swiping = false;
+  game.addEventListener('pointerdown', (e) => { if (e.target.closest('button')) return; swiping = true; sx = e.clientX; sy = e.clientY; });
+  game.addEventListener('pointerup', (e) => {
+    if (!swiping) return; swiping = false;
+    const dx = e.clientX - sx, dy = e.clientY - sy;
+    if (Math.max(Math.abs(dx), Math.abs(dy)) < 18) { if (over) start(); return; }
+    turn(Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'down' : 'up'));
+  });
+  document.addEventListener('visibilitychange', () => { if (document.hidden) clearInterval(timer); else if (!game.hidden && started && !over) restart(); });
+})();
+</script>
+
+<script>
+(() => {
+  document.querySelectorAll('.svc-tab').forEach(b => b.addEventListener('click', () => {
+    const tabs = [...b.parentElement.querySelectorAll('.svc-tab')];
+    const open = b.getAttribute('aria-expanded') !== 'true';
+    tabs.forEach(t => { t.setAttribute('aria-expanded', 'false'); document.getElementById(t.getAttribute('aria-controls')).hidden = true; });
+    if (open) { b.setAttribute('aria-expanded', 'true'); document.getElementById(b.getAttribute('aria-controls')).hidden = false; }
+  }));
+})();
+</script>
+
+<script>
+/* desktop: line up each item's title, text and chips across the two open panels */
+(() => {
+  const parts = ['.svc-st', '.svc-d', '.pins'];
+  const align = () => {
+    const lists = [...document.querySelectorAll('.svc-g > .svc-list:not([hidden])')];
+    lists.forEach(l => l.querySelectorAll(parts.join(',')).forEach(e => e.style.minHeight = ''));
+    if (innerWidth < 1024 || lists.length < 2) return;
+    const rows = Math.max(...lists.map(l => l.children.length));
+    for (let i = 0; i < rows; i++) parts.forEach(sel => {
+      const els = lists.map(l => l.children[i] && l.children[i].querySelector(sel)).filter(Boolean);
+      const h = Math.max(...els.map(e => e.getBoundingClientRect().height));
+      els.forEach(e => e.style.minHeight = h + 'px');
+    });
+  };
+  document.querySelectorAll('.svc-tab, #services-btn, #lang').forEach(b => b.addEventListener('click', () => requestAnimationFrame(align)));
+  addEventListener('resize', align);
+  if (document.fonts) document.fonts.ready.then(align);
+})();
+</script>
+</body>
+</html>
