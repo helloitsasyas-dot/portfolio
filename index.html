@@ -478,6 +478,13 @@ section:has(.toggle[aria-expanded="true"]) { padding-bottom: clamp(44px, 5vw, 76
 .socials .pill:nth-child(2) { --px: -1; }
 @media (prefers-reduced-motion: reduce) { .socials .pill:hover, #play-top:hover { animation: none; } }
 
+
+/* mobile: bigger animated glyphs so they fill the gaps in the justified intro */
+@media (max-width: 640px) {
+  .statement .g::after { scale: 1.35; transform-origin: center; }
+  .statement .g.bob::after { scale: 1.6; }
+  .statement .g.rev::after { scale: 1; }
+}
 </style>
 </head>
 <body>
