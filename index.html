@@ -12,7 +12,7 @@
 <title>Anastasia (Asya) S</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400&family=Instrument+Serif:ital@1&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400&family=Instrument+Serif:ital@1&family=Silkscreen&display=swap">
 <style>
 /* Layout: white sheet. Three-part top line, empty field, then a small caption row and the name set edge to edge across the bottom. */
 :root {
@@ -187,7 +187,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--fg); outline-of
 
 /* ---------- ledger ---------- */
 section {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+  display: grid; grid-template-columns: clamp(220px, 30vw, 460px) 1fr; gap: 24px clamp(24px, 3vw, 56px);
   border-top: 1px solid var(--rule);
   padding-block: clamp(22px, 2.6vw, 38px);
 }
@@ -235,7 +235,7 @@ footer {
 @media (max-width: 640px) {
   .screen { min-height: 68svh; gap: 72px; }
   .portrait { margin: 8px 0; width: 65px; }
-  .statement { font-size: 28px; line-height: 1.08; max-width: none; text-wrap: wrap; text-align: justify; text-align-last: left; hyphens: auto; }
+  .statement { font-size: 28px; line-height: 1.08; max-width: none; text-wrap: wrap; text-align: left; hyphens: manual; }
 }
 .bigname, .statement, section > h2, .role, .sign { color: var(--ink); }
 .mail { position: relative; z-index: 2; border-top: 1px solid var(--rule); padding-block: clamp(32px, 5vw, 64px) 8px; display: grid; gap: 10px; }
@@ -328,7 +328,7 @@ a:hover, a:hover *, .toggle:hover > span:first-child, .copy:hover { color: var(-
 .mail { margin-top: clamp(56px, 8vw, 140px); border-top: 0; }
 
 .statement .s2 { display: block; font-size: max(.5em, 17px); line-height: 1.2; margin-top: .9em; max-width: 46ch; }
-.socials { display: flex; flex-wrap: wrap; gap: 10px; margin-top: clamp(18px, 2.4vw, 32px); }
+.socials { display: flex; flex-wrap: wrap; gap: 6px; margin-top: clamp(18px, 2.4vw, 32px); }
 .pill {
   display: inline-flex; align-items: center; gap: .5em; padding: .55em 1.1em .6em;
   border: 1.5px solid var(--fg); border-radius: 999px; font-size: 16px; line-height: 1; color: var(--fg);
@@ -397,7 +397,7 @@ html, body { overflow-x: clip; }
 
 
 .g-help { margin: 0; color: var(--muted); font-size: 13px; text-align: center; }
-.g-note { margin: 6px 0 0; padding: 12px 14px; border: 1.5px solid #4a4a46; border-radius: 12px; max-width: 320px; box-sizing: border-box; width: 100%; color: #8c8c88; font-family: var(--sans); font-style: normal; font-size: 14px; line-height: 1.4; text-align: left; text-wrap: pretty; }
+.g-note { margin: 6px 0 0; padding: 12px 14px; border: 1px solid #2a2a28; border-radius: 12px; position: relative; padding-right: 34px; max-width: 320px; box-sizing: border-box; width: 100%; color: #8c8c88; font-family: var(--sans); font-style: normal; font-size: 12px; line-height: 1.45; text-align: left; text-wrap: pretty; }
 .play.mini { font-size: 13px; padding: .5em .9em .55em; height: 32px; box-sizing: border-box; }
 #g-board { touch-action: none; }
 @media (hover: hover) and (pointer: fine) { .g-pad { display: none; } }
@@ -419,7 +419,7 @@ html, body { overflow-x: clip; }
   .menu-open .bars i:last-child { top: 5px; transform: rotate(-45deg); }
   .top { display: grid; grid-template-columns: 1fr auto; grid-template-rows: auto auto 1fr; column-gap: 12px; row-gap: 14px; align-items: start; }
   .burger { grid-column: 1; grid-row: 1; }
-  .mbar { grid-column: 1; grid-row: 2; display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+  .mbar { grid-column: 1; grid-row: 2; display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
   .top .right { grid-column: 2; grid-row: 1 / -1; }
   .top .right > a { font-size: 15px; }
   .top .mid {
@@ -451,7 +451,7 @@ section:has(.toggle[aria-expanded="true"]) { padding-bottom: clamp(44px, 5vw, 76
 .svc-t { font-size: clamp(18px, 1.5vw, 22px); letter-spacing: -0.01em; line-height: 1.25; }
 .svc-st { font-size: 16px; line-height: 1.3; }
 .svc-sum { margin: -8px 0 20px; font-size: 15px; line-height: 1.3; color: var(--muted); max-width: 46ch; }
-.svc-tabs { display: flex; flex-wrap: wrap; gap: 8px; }
+.svc-tabs { display: flex; flex-wrap: wrap; gap: 6px; }
 .svc-tab { height: 32px; box-sizing: border-box; padding: 0 .9em; border: 1.5px solid var(--fg); border-radius: 999px; background: none; color: var(--fg); font: inherit; font-size: 13px; cursor: pointer; white-space: nowrap; transition: background-color .2s ease, color .2s ease; }
 .svc-tab:hover, .svc-tab[aria-expanded="true"] { background: var(--dot-lime); border-color: var(--dot-lime); color: #111110; }
 .svc-sum + .svc-cre { margin-top: 26px; }
@@ -472,8 +472,8 @@ section:has(.toggle[aria-expanded="true"]) { padding-bottom: clamp(44px, 5vw, 76
 @media (min-width: 1024px) {
   .mail { grid-template-columns: auto 1fr; column-gap: clamp(32px, 5vw, 96px); }
   .mail > .say, .mail > .bigmail { grid-column: 1; }
-  .mail > .socials { grid-column: 2; grid-row: 1 / span 2; align-self: end; flex-direction: column; flex-wrap: nowrap; align-items: flex-end; gap: clamp(10px, 1vw, 16px); margin: 0; }
-  .socials .pill { font-size: clamp(18px, 1.7vw, 30px); height: auto; padding: .5em 1.1em; border-width: 2px; justify-content: center; letter-spacing: -0.02em; }
+  .mail > .socials { grid-column: 2; grid-row: 1 / span 2; align-self: end; flex-direction: column; flex-wrap: nowrap; align-items: flex-end; gap: 3px; margin: 0; }
+  .socials .pill { font-size: clamp(15px, 1.3vw, 22px); height: auto; min-height: calc(3 * clamp(18px, 1.7vw, 30px)); min-width: calc(14 * clamp(18px, 1.7vw, 30px)); padding: 0 2.5em; border-width: 2px; justify-content: center; letter-spacing: -0.02em; }
   .socials .pill .psq { width: 1em; height: 1em; }
 }
 
@@ -492,7 +492,7 @@ section:has(.toggle[aria-expanded="true"]) { padding-bottom: clamp(44px, 5vw, 76
 
 
 /* smiley drawn as an image so it sits the same on every phone and browser (no font fallback) */
-.statement .g.bob { font-family: var(--sans); }
+.statement .g.bob { font-family: var(--sans); margin: 0 .14em; }
 .statement .g.bob::after { content: ""; left: 50%; top: 50%; width: .95em; height: .95em; margin: -.475em 0 0 -.475em; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='1.6' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Ccircle cx='8.6' cy='9.6' r='1.1' fill='white' stroke='none'/%3E%3Ccircle cx='15.4' cy='9.6' r='1.1' fill='white' stroke='none'/%3E%3Cpath d='M7.6 14.2c1 1.9 2.6 2.9 4.4 2.9s3.4-1 4.4-2.9'/%3E%3C/svg%3E") center / contain no-repeat; }
 
 /* mobile: bigger animated glyphs so they fill the gaps in the justified intro */
@@ -503,8 +503,7 @@ section:has(.toggle[aria-expanded="true"]) { padding-bottom: clamp(44px, 5vw, 76
 }
 
 /* mobile: game takes the whole screen; big board and big D-pad; the Nokia note sits on the board until you start */
-@media (min-width: 641px) { .g-stage { display: contents; } }
-@media (max-width: 640px) { .g-stage { position: relative; display: grid; place-items: center; } }
+.g-stage { position: relative; display: grid; place-items: center; width: 100%; }
 @media (max-width: 640px) {
   .game { height: 100dvh; padding: max(12px, env(safe-area-inset-top)) 12px max(24px, env(safe-area-inset-bottom)); place-items: stretch; overflow-y: auto; touch-action: pan-y; }
   .g-wrap { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 10px; }
@@ -514,18 +513,89 @@ section:has(.toggle[aria-expanded="true"]) { padding-bottom: clamp(44px, 5vw, 76
   .g-pad { grid-template-columns: repeat(3, 72px); grid-template-rows: repeat(3, 72px); margin: 14px 0 6px; }
   .g-pad svg { width: 28px; height: 28px; }
   .g-help { display: none; }
-  .g-note { max-width: none; width: 100%; margin: 18px 0 0; font-size: 13px; line-height: 1.35; padding: 10px 12px; }
+  .g-note { max-width: none; width: 100%; margin: 18px 0 0; font-size: 12px; line-height: 1.4; padding: 10px 34px 10px 12px; }
 }
 @media (max-width: 640px) and (max-height: 700px) {
   .g-pad { grid-template-columns: repeat(3, 62px); grid-template-rows: repeat(3, 62px); }
   .g-stage { width: min(100%, calc(100dvh - 300px)); }
 }
 
-/* mobile: game messages sit on the board in white, so the controls never move */
-@media (max-width: 640px) {
-  .g-stage .g-msg { position: absolute; left: 50%; top: 18%; transform: translateX(-50%); width: max-content; max-width: calc(100% - 32px); box-sizing: border-box; padding: 8px 14px; border-radius: 10px; background: rgba(17,17,16,.85); min-height: 0; color: #fff; font-size: 17px; line-height: 1.35; text-align: center; text-wrap: balance; pointer-events: none; text-shadow: 0 1px 8px #000; }
-  .g-stage .g-msg:empty { display: none; }
+/* game messages sit on the board in white on every screen, so nothing below ever moves */
+.g-stage .g-msg { position: absolute; left: 16px; right: 16px; top: 18%; margin: 0 auto; width: fit-content; max-width: calc(100% - 32px); box-sizing: border-box; padding: 8px 14px; border-radius: 10px; background: rgba(17,17,16,.85); min-height: 0; color: #fff; font-size: 17px; line-height: 1.35; text-align: center; text-wrap: balance; pointer-events: none; text-shadow: 0 1px 8px #000; }
+.g-stage .g-msg:empty { display: none; }
+
+/* no hanging words: balance short paragraphs so lines come out even */
+.svc-d, .svc-sum, .jd, .g-note, .statement .s2, .svc-st, .svc-h, footer span { text-wrap: pretty; }
+.g-msg { text-wrap: balance; }
+@media (min-width: 641px) { .g-stage { max-width: 320px; } }
+
+/* phones only: the intro is justified edge to edge; tablets keep it left-aligned */
+@media (max-width: 480px) {
+  .statement { text-align: justify; text-align-last: left; hyphens: auto; }
 }
+
+/* email copy toast */
+#copy-toast { position: fixed; left: 50%; bottom: max(24px, env(safe-area-inset-bottom)); transform: translate(-50%, 16px); z-index: 90; padding: 10px 16px; border-radius: 999px; background: #fff; color: #111110; font: 500 15px/1 var(--sans); opacity: 0; pointer-events: none; transition: opacity .25s, transform .25s; }
+#copy-toast.show { opacity: 1; transform: translate(-50%, 0); }
+.bigmail { -webkit-user-select: text; user-select: text; }
+/* intro words float like the squares when touched */
+@keyframes wfloat {
+  0%   { translate: 0 0; rotate: 0deg; }
+  35%  { translate: var(--tx) var(--ty); rotate: var(--rot); }
+  65%  { translate: calc(var(--tx) * .8) calc(var(--ty) * 1.2); rotate: calc(var(--rot) * -.5); }
+  100% { translate: 0 0; rotate: 0deg; }
+}
+.statement { position: relative; }
+.statement.floating, .statement.floating :not(.fw):not(.g) { color: transparent !important; }
+.float-layer { position: absolute; inset: 0; pointer-events: none; }
+.float-layer .fw { position: absolute; white-space: pre; display: block; animation: wfloat var(--fd, 7s) ease-in-out var(--fdl, 0s) 1 both; }
+@media (prefers-reduced-motion: reduce) { .statement .fw { animation: none; } }
+
+/* big screens: if a paragraph wraps, split it into even lines (no long line + short line) */
+@media (min-width: 641px) { .svc-d, .svc-sum, .jd, .statement .s2, footer span { text-wrap: balance; } }
+
+/* readable line length for the job descriptions in the wider column */
+.jd { max-width: 68ch; }
+
+/* web: smaller text inside the small buttons, same button size */
+@media (min-width: 1024px) {
+  .svc-tab, .play.mini, .lang-opt { font-size: 12px; }
+  .svc-tab, .play.mini { padding-left: 1.1em; padding-right: 1.1em; }
+}
+
+/* mobile + iPad: EN/IT switch and Play button are the same size */
+@media (max-width: 1023px) {
+  .lang, .play.mini { width: 124px; height: 34px; justify-content: center; box-sizing: border-box; }
+}
+/* iPad, web, desktop: job titles on one line */
+@media (min-width: 641px) {
+  #work button.role { max-width: none; white-space: nowrap; }
+}
+
+/* web: three shapes for the three big contact buttons */
+@media (min-width: 1024px) {
+  .socials .pill:nth-child(1) { border-radius: 999px; }
+  .socials .pill:nth-child(2) { border-radius: 0; }
+  .socials .pill:nth-child(3) { border-radius: 18px; }
+}
+/* mobile: buttons sitting side by side almost touch */
+@media (max-width: 640px) {
+  .svc-tabs, .socials { gap: 4px; }
+}
+
+/* Snake speaks in a pixel font, like an old Nokia */
+.g-stage .g-msg { font-family: "Silkscreen", var(--mono), monospace; font-size: 15px; line-height: 1.5; letter-spacing: .02em; text-transform: none; }
+
+.g-note-x { all: unset; position: absolute; top: 6px; right: 6px; width: 24px; height: 24px; display: grid; place-items: center; color: #6b6b67; font-size: 13px; cursor: pointer; border-radius: 50%; }
+.g-note-x:hover { color: #fff; }
+.g-note[hidden] { display: none; }
+#game-title { font-family: "Silkscreen", var(--mono), monospace !important; letter-spacing: .04em; }
+@media (min-width: 1024px) { .socials .pill:nth-child(3) { border-radius: 999px !important; } }
+
+@media (min-width: 641px) { .g-help { font-size: 12px; white-space: nowrap; } }
+
+.g-note { text-wrap: pretty !important; }
+#g-note { display: block; text-align: left; text-wrap: pretty; }
 </style>
 </head>
 <body>
@@ -574,42 +644,42 @@ section:has(.toggle[aria-expanded="true"]) { padding-bottom: clamp(44px, 5vw, 76
   <div class="svc" id="services-body" hidden>
     <div class="svc-g">
       <h3 class="svc-h">For design studios &amp; start-ups</h3>
-      <p class="svc-sum">Strategy, production and digital product under one roof: I find what makes a brand matter, run the production that brings it to life, and build the digital products around it.</p>
+      <p class="svc-sum">From strategy to delivery: brand, production and digital product.</p>
       <div class="svc-tabs" role="group" aria-label="Skill sets"><button class="svc-tab" type="button" aria-expanded="false" aria-controls="bs-body">Brand strategy</button><button class="svc-tab" type="button" aria-expanded="false" aria-controls="pr-body">Production</button><button class="svc-tab" type="button" aria-expanded="false" aria-controls="dp-body">Digital product development</button></div>
       <ul class="svc-list" id="bs-body" hidden>
-        <li><span class="svc-st">What makes the brand different</span><span class="svc-d">The emotional or technical reason people choose the brand, and whether the market is really asking for it.</span><span class="pins"><span class="pin">UVP</span><span class="pin">Product–market fit</span></span></li>
-        <li><span class="svc-st">The competitive landscape</span><span class="svc-d">Who else is out there, where the open space is, and the routes the brand could take.</span><span class="pins"><span class="pin">Competitor audit</span><span class="pin">Positioning map</span><span class="pin">Brand territories</span></span></li>
-        <li><span class="svc-st">Who buys and why</span><span class="svc-d">Telling followers apart from paying clients, and tracing every step from first contact to decision.</span><span class="pins"><span class="pin">CJM</span><span class="pin">Personas</span><span class="pin">Buyer psychology</span></span></li>
-        <li><span class="svc-st">Where to show up</span><span class="svc-d">The right mix for marketing, sales and promotion, and the first touchpoint that pulls people in.</span><span class="pins"><span class="pin">Go-to-market</span><span class="pin">Channel mix</span><span class="pin">Touchpoints</span></span></li>
-        <li><span class="svc-st">From insight to image</span><span class="svc-d">Briefing art directors so the research turns into a look and a voice.</span><span class="pins"><span class="pin">Creative brief</span><span class="pin">Moodboards</span><span class="pin">Tone of voice</span></span></li>
+        <li><span class="svc-st">What makes the brand different</span><span class="svc-d">The real reason people choose the brand.</span><span class="pins"><span class="pin">UVP</span><span class="pin">Product–market fit</span></span></li>
+        <li><span class="svc-st">The competitive landscape</span><span class="svc-d">Who’s out there, and where the open space is.</span><span class="pins"><span class="pin">Competitor audit</span><span class="pin">Positioning map</span><span class="pin">Brand territories</span></span></li>
+        <li><span class="svc-st">Who buys and why</span><span class="svc-d">Followers vs clients, and every step to a sale.</span><span class="pins"><span class="pin">CJM</span><span class="pin">Personas</span><span class="pin">Buyer psychology</span></span></li>
+        <li><span class="svc-st">Where to show up</span><span class="svc-d">Where marketing, sales and promotion should live.</span><span class="pins"><span class="pin">Go-to-market</span><span class="pin">Channel mix</span><span class="pin">Touchpoints</span></span></li>
+        <li><span class="svc-st">From insight to image</span><span class="svc-d">Research turned into a look and a voice.</span><span class="pins"><span class="pin">Creative brief</span><span class="pin">Moodboards</span><span class="pin">Tone of voice</span></span></li>
       </ul>
       <ul class="svc-list" id="pr-body" hidden>
-        <li><span class="svc-st">Winning the work</span><span class="svc-d">From the first call to the signed deal, with ideas that land in the room.</span><span class="pins"><span class="pin">Presales</span><span class="pin">Pitch decks</span><span class="pin">Ideation</span></span></li>
-        <li><span class="svc-st">Team &amp; logistics</span><span class="svc-d">The right crew and suppliers, with time and budget kept on track.</span><span class="pins"><span class="pin">Team building</span><span class="pin">Suppliers</span><span class="pin">Timelines</span><span class="pin">Client accounting</span></span></li>
-        <li><span class="svc-st">Making it happen</span><span class="svc-d">Hands-on creative direction and the daily running, all the way to the final delivery.</span><span class="pins"><span class="pin">Creative direction</span><span class="pin">Project management</span><span class="pin">Quality control</span></span></li>
+        <li><span class="svc-st">Winning the work</span><span class="svc-d">From the first call to the signed deal.</span><span class="pins"><span class="pin">Presales</span><span class="pin">Pitch decks</span><span class="pin">Ideation</span></span></li>
+        <li><span class="svc-st">Team &amp; logistics</span><span class="svc-d">The right crew, on time and on budget.</span><span class="pins"><span class="pin">Team building</span><span class="pin">Suppliers</span><span class="pin">Timelines</span><span class="pin">Client accounting</span></span></li>
+        <li><span class="svc-st">Making it happen</span><span class="svc-d">Hands-on direction, all the way to delivery.</span><span class="pins"><span class="pin">Creative direction</span><span class="pin">Project management</span><span class="pin">Quality control</span></span></li>
       </ul>
       <ul class="svc-list" id="dp-body" hidden>
-        <li><span class="svc-st">Pages that convert</span><span class="svc-d">The screens and journeys people move through, from first click to sign-up.</span><span class="pins"><span class="pin">Landing pages</span><span class="pin">User flows</span><span class="pin">Wireframes</span></span></li>
-        <li><span class="svc-st">Testing with real people</span><span class="svc-d">Watching how people actually use the product and fixing what trips them up.</span><span class="pins"><span class="pin">UX/CX research</span><span class="pin">Usability testing</span><span class="pin">UX review</span></span></li>
-        <li><span class="svc-st">Systems &amp; words</span><span class="svc-d">A tidy design library, and the words that tell the product’s story.</span><span class="pins"><span class="pin">Component library</span><span class="pin">Copywriting</span><span class="pin">Storytelling</span></span></li>
-        <li><span class="svc-st">Building with AI</span><span class="svc-d">Working prototypes and tools shipped fast, with design and code kept in sync.</span><span class="pins"><span class="pin">Vibecoding</span><span class="pin">Notion</span><span class="pin">Figma ↔ Claude</span></span></li>
+        <li><span class="svc-st">Pages that convert</span><span class="svc-d">From the first click to the sign-up.</span><span class="pins"><span class="pin">Landing pages</span><span class="pin">User flows</span><span class="pin">Wireframes</span></span></li>
+        <li><span class="svc-st">Testing with real people</span><span class="svc-d">How people really use the product.</span><span class="pins"><span class="pin">UX/CX research</span><span class="pin">Usability testing</span><span class="pin">UX review</span></span></li>
+        <li><span class="svc-st">Systems &amp; words</span><span class="svc-d">A tidy design system and words with a voice.</span><span class="pins"><span class="pin">Component library</span><span class="pin">Copywriting</span><span class="pin">Storytelling</span></span></li>
+        <li><span class="svc-st">Building with AI</span><span class="svc-d">Working prototypes, shipped fast.</span><span class="pins"><span class="pin">Vibecoding</span><span class="pin">Notion</span><span class="pin">Figma ↔ Claude</span></span></li>
       </ul>
     </div>
     <div class="svc-g">
       <h3 class="svc-h">For creators &amp; influencers</h3>
-      <p class="svc-sum">For creators who already have an audience and want to turn it into a real brand and a business.</p>
+      <p class="svc-sum">For creators ready to turn an audience into a business.</p>
       <div class="svc-tabs" role="group" aria-label="Skill sets"><button class="svc-tab" type="button" aria-expanded="false" aria-controls="cb-body">Brand &amp; product</button><button class="svc-tab" type="button" aria-expanded="false" aria-controls="cc-body">Content &amp; campaigns</button><button class="svc-tab" type="button" aria-expanded="false" aria-controls="cf-body">Funnels &amp; metrics</button></div>
       <ul class="svc-list" id="cb-body" hidden>
-        <li><span class="svc-st">Your real brand</span><span class="svc-d">You have followers but no clear business yet. We find what sets you apart and what people would pay you for.</span><span class="pins"><span class="pin">Monetisation</span><span class="pin">Niche</span><span class="pin">UVP</span></span></li>
-        <li><span class="svc-st">Your product</span><span class="svc-d">You have something to sell but no plan. We shape it, test it with your audience and launch it.</span><span class="pins"><span class="pin">Courses</span><span class="pin">Lectures</span><span class="pin">Apps</span><span class="pin">Programmes</span></span></li>
+        <li><span class="svc-st">Your real brand</span><span class="svc-d">What makes you different, and worth paying for.</span><span class="pins"><span class="pin">Monetisation</span><span class="pin">Niche</span><span class="pin">UVP</span></span></li>
+        <li><span class="svc-st">Your product</span><span class="svc-d">Shaped, tested with your audience and launched.</span><span class="pins"><span class="pin">Courses</span><span class="pin">Lectures</span><span class="pin">Apps</span><span class="pin">Programmes</span></span></li>
       </ul>
       <ul class="svc-list" id="cc-body" hidden>
-        <li><span class="svc-st">Growing your content</span><span class="svc-d">What to post and in which shape, so your audience keeps growing.</span><span class="pins"><span class="pin">Content pillars</span><span class="pin">Formats</span><span class="pin">Editorial calendar</span></span></li>
-        <li><span class="svc-st">An extra pair of hands</span><span class="svc-d">Someone to run your brand day to day and organise launches and partnerships.</span><span class="pins"><span class="pin">Brand management</span><span class="pin">Campaigns</span><span class="pin">Brand deals</span></span></li>
+        <li><span class="svc-st">Growing your content</span><span class="svc-d">What to post, so your audience keeps growing.</span><span class="pins"><span class="pin">Content pillars</span><span class="pin">Formats</span><span class="pin">Editorial calendar</span></span></li>
+        <li><span class="svc-st">An extra pair of hands</span><span class="svc-d">Your brand and launches, run day to day.</span><span class="pins"><span class="pin">Brand management</span><span class="pin">Campaigns</span><span class="pin">Brand deals</span></span></li>
       </ul>
       <ul class="svc-list" id="cf-body" hidden>
-        <li><span class="svc-st">From follower to client</span><span class="svc-d">The path that turns people who watch you into people who buy, whether individuals or companies.</span><span class="pins"><span class="pin">Funnels</span><span class="pin">B2C</span><span class="pin">B2B</span><span class="pin">Lead magnets</span></span></li>
-        <li><span class="svc-st">Knowing what works</span><span class="svc-d">The few numbers that matter, checked regularly, so decisions stop being guesswork.</span><span class="pins"><span class="pin">KPIs</span><span class="pin">Analytics</span><span class="pin">Monthly reviews</span></span></li>
+        <li><span class="svc-st">From follower to client</span><span class="svc-d">Turning people who watch into people who buy.</span><span class="pins"><span class="pin">Funnels</span><span class="pin">B2C</span><span class="pin">B2B</span><span class="pin">Lead magnets</span></span></li>
+        <li><span class="svc-st">Knowing what works</span><span class="svc-d">The few numbers that matter, checked monthly.</span><span class="pins"><span class="pin">KPIs</span><span class="pin">Analytics</span><span class="pin">Monthly reviews</span></span></li>
       </ul>
     </div>
   </div>
@@ -695,7 +765,7 @@ section:has(.toggle[aria-expanded="true"]) { padding-bottom: clamp(44px, 5vw, 76
       <button type="button" class="down" data-k="down" aria-label="Down"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" style="transform:rotate(180deg)"><path d="M12 6l7 9H5z" fill="currentColor"/></svg></button>
     </div>
     <p class="g-help" id="g-help">Arrows to move · ↑ rotate · Space drop · Esc close</p>
-    <p class="g-note" id="g-note"></p>
+    <div class="g-note" id="g-note-box"><span id="g-note"></span><button class="g-note-x" id="g-note-x" type="button" aria-label="Close note">✕</button></div>
   </div>
 </div>
 
@@ -822,19 +892,29 @@ document.addEventListener('click', (e) => {
   }));
 })();
 
+/* tap the big email to copy it; a small toast confirms */
 document.getElementById('email').addEventListener('click', async (e) => {
-  const el = e.currentTarget;
-  try { await navigator.clipboard.writeText(el.dataset.mail); el.title = 'Copied'; }
-  catch {
-    const r = document.createRange(); r.selectNodeContents(el);
-    const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r);
+  const el = e.currentTarget, mail = el.dataset.mail;
+  let ok = false;
+  try { await navigator.clipboard.writeText(mail); ok = true; } catch {}
+  if (!ok) {
+    const ta = document.createElement('textarea'); ta.value = mail; ta.setAttribute('readonly', '');
+    ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0;font-size:16px';
+    document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, mail.length);
+    try { ok = document.execCommand('copy'); } catch {}
+    ta.remove();
   }
+  const it = document.documentElement.lang === 'it';
+  let t = document.getElementById('copy-toast');
+  if (!t) { t = document.createElement('div'); t.id = 'copy-toast'; t.setAttribute('role', 'status'); document.body.appendChild(t); }
+  t.textContent = ok ? (it ? 'Email copiata ✓' : 'Email copied ✓') : mail;
+  t.classList.add('show'); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('show'), 1800);
 });
 </script>
 <script>
 /* English / Italian switch: swaps every text fragment, remembers the choice */
 (() => {
-  const IT = {"Work": "Esperienze", "Services": "Servizi", "Send me a message": "Scrivimi", "Brand strategy, Research, Production": "Strategia di brand, Ricerca, Produzione", ", Italy.": ", Italia.", "I turn": "Trasformo la", "I turn research into positioning, and positioning into work that ships, for brands, studios and creators.": "Trasformo la ricerca in posizionamento, e il posizionamento in progetti che arrivano sul mercato, per brand, studi e creator.", "creative producer": "creative producer", "brand strategist": "brand strategist", "Play a game": "Gioca", "Play": "Gioca", "Hello": "Ciao", ", I’m a": ", sono una", "and": "e", "based in Umbria": "di base in Umbria", ", Italy. I turn": ", Italia. Trasformo la", "research": "ricerca", "into": "in", "positioning": "posizionamento", ", and positioning into": ", e il posizionamento in", "work that ships": "progetti che arrivano sul mercato", ", for brands, studios and": ", per brand, studi e", "creators": "creator", "2026 – Now": "2026 – oggi", "2025 – Now": "2025 – oggi", "2022 – 2025": "2022 – 2025", "2020 – 2022": "2020 – 2022", "2019 – 2020": "2019 – 2020", "2018 – 2019": "2018 – 2019", "Creative Producer, startups & creators": "Creative Producer per startup e creator", "Freelance, working with creators": "Freelance, lavoro con creator", "Movemeon, London": "Movemeon, Londra", "End-to-end creative production for Italian and international clients: brand research, positioning, strategy and execution across branding and social media.": "Produzione creativa end-to-end per clienti italiani e internazionali: ricerca di brand, posizionamento, strategia ed esecuzione per branding e social media.", "Research, funnels, service, product and content strategy for creators and founders, including Hanna Gets Hired (130K+ audience) and Leyla Nees.": "Ricerca, funnel, strategia di servizio, prodotto e contenuti per creator e founder, tra cui Hanna Gets Hired (oltre 130K follower) e Leyla Nees.", "Ran the full production team: weekly goals, resourcing and assignments. Led presales, upsells, accounting and crisis management across 100+ startup clients, including the Y Combinator portfolio. Shaped client strategy through ICP research, A/B testing and UVP definition, with quality oversight across branding and marketing work.": "Ho guidato l’intero team di produzione: obiettivi settimanali, allocazione delle risorse e assegnazione dei progetti. Ho seguito prevendita, upselling, accounting e crisis management per oltre 100 startup, tra cui il portfolio Y Combinator. Ho impostato la strategia dei clienti attraverso ricerca sull’ICP, A/B test e definizione della UVP, supervisionando la qualità dei lavori di branding e marketing.", "Usability research and testing, UX/UI design, strategic design direction and dev team grooming.": "Ricerca e test di usabilità, design UX/UI, direzione strategica del design e coordinamento del team di sviluppo.", "Original benchmarking, usability research and testing, client proposals and copywriting.": "Benchmarking su misura, ricerca e test di usabilità, proposte commerciali e copywriting.", "UX/UI design and development of the main product and its marketing assets.": "Design UX/UI e sviluppo del prodotto principale e dei materiali di marketing.", "Brand research & benchmarking": "Ricerca di brand e benchmarking", "Positioning & brand strategy": "Posizionamento e strategia di brand", "Personal brands for creators": "Personal branding per creator", "Fractional creative production": "Produzione creativa part-time", "Pitch & presales strategy": "Strategia di pitch e prevendita", "Italian market entry": "Ingresso nel mercato italiano", "Languages & education": "Lingue e formazione", "English": "Inglese", "Italian": "Italiano", "Russian": "Russo", "Native": "Madrelingua", "MSc Research Methods": "MSc in Metodi di ricerca", "UCL London, 2016": "UCL Londra, 2016", "Say": "Say ciao", "What makes the brand different": "Cosa rende unico il brand", "The emotional or technical reason people choose the brand, and whether the market is really asking for it.": "La ragione, emotiva o tecnica, per cui le persone scelgono il brand, e se il mercato ne ha davvero bisogno.", "The competitive landscape": "Il panorama competitivo", "Who else is out there, where the open space is, and the routes the brand could take.": "Chi presidia già il mercato, dove c’è ancora spazio e quali direzioni può prendere il brand.", "Competitor audit": "Analisi dei competitor", "Positioning map": "Mappa di posizionamento", "Brand territories": "Territori di brand", "Who buys and why": "Chi compra e perché", "Telling followers apart from paying clients, and tracing every step from first contact to decision.": "Distinguere i follower dai clienti paganti e ricostruire ogni passaggio, dal primo contatto alla decisione d’acquisto.", "Buyer psychology": "Psicologia d’acquisto", "Where to show up": "Dove farsi trovare", "The right mix for marketing, sales and promotion, and the first touchpoint that pulls people in.": "Il giusto mix di canali per marketing, vendite e promozione, e il primo punto di contatto che aggancia le persone.", "Channel mix": "Mix di canali", "Touchpoints": "Touchpoint", "From insight to image": "Dall’insight all’immagine", "Briefing art directors so the research turns into a look and a voice.": "Affiancare gli art director perché la ricerca si traduca in un’identità visiva e in un tono di voce.", "Creative brief": "Brief creativo", "Moodboards": "Moodboard", "Winning the work": "Conquistare il cliente", "From the first call to the signed deal, with ideas that land in the room.": "Dalla prima call al contratto firmato, con idee che convincono già al primo incontro.", "Presales": "Prevendita", "Pitch decks": "Pitch deck", "Ideation": "Ideazione", "Team & logistics": "Team e logistica", "The right crew and suppliers, with time and budget kept on track.": "Il team e i fornitori giusti, con tempi e budget sotto controllo.", "Team building": "Composizione del team", "Suppliers": "Fornitori", "Timelines": "Tempistiche", "Client accounting": "Contabilità clienti", "Making it happen": "Portare a casa il progetto", "Hands-on creative direction and the daily running, all the way to the final delivery.": "Direzione creativa sul campo e gestione quotidiana, fino alla consegna finale.", "Creative direction": "Direzione creativa", "Quality control": "Controllo qualità", "Pages that convert": "Pagine che convertono", "The screens and journeys people move through, from first click to sign-up.": "Schermate e percorsi utente, dal primo clic all’iscrizione.", "Landing pages": "Landing page", "User flows": "User flow", "Wireframes": "Wireframe", "Testing with real people": "Test con utenti reali", "Watching how people actually use the product and fixing what trips them up.": "Osservare come gli utenti usano davvero il prodotto ed eliminare ciò che li blocca.", "UX/CX research": "Ricerca UX/CX", "Usability testing": "Test di usabilità", "UX review": "Revisione UX", "Systems & words": "Struttura e testi", "A tidy design library, and the words that tell the product’s story.": "Un sistema visivo ordinato e testi che danno voce al prodotto.", "Component library": "Libreria di componenti", "Building with AI": "Costruire con l’AI", "Working prototypes and tools shipped fast, with design and code kept in sync.": "Prototipi e strumenti funzionanti in tempi rapidi, con design e codice sempre allineati.", "Your real brand": "Il tuo vero brand", "You have followers but no clear business yet. We find what sets you apart and what people would pay you for.": "Hai dei follower ma ancora nessun business chiaro. Troviamo cosa ti distingue e per cosa le persone sarebbero disposte a pagarti.", "Monetisation": "Monetizzazione", "Niche": "Nicchia", "Your product": "Il tuo prodotto", "You have something to sell but no plan. We shape it, test it with your audience and launch it.": "Hai qualcosa da vendere ma nessun piano. Lo definiamo, lo testiamo con il tuo pubblico e lo lanciamo.", "Courses": "Corsi", "Lectures": "Lezioni", "Apps": "App", "Programmes": "Programmi", "Growing your content": "Far crescere i contenuti", "What to post and in which shape, so your audience keeps growing.": "Cosa pubblicare e in che forma, perché il tuo pubblico continui a crescere.", "Content pillars": "Pilastri editoriali", "Formats": "Formati", "Editorial calendar": "Piano editoriale", "An extra pair of hands": "Una mano in più", "Someone to run your brand day to day and organise launches and partnerships.": "Qualcuno che gestisca il tuo brand ogni giorno e organizzi lanci e collaborazioni.", "Brand management": "Gestione del brand", "Campaigns": "Campagne", "Brand deals": "Brand deal", "From follower to client": "Da follower a cliente", "The path that turns people who watch you into people who buy, whether individuals or companies.": "Il percorso che trasforma chi ti segue in chi compra, che si tratti di privati o di aziende.", "Funnels": "Funnel", "Lead magnets": "Lead magnet", "Knowing what works": "Capire cosa funziona", "The few numbers that matter, checked regularly, so decisions stop being guesswork.": "Pochi numeri, quelli giusti, da monitorare con costanza per decidere sui dati e non a intuito.", "KPIs": "KPI", "Monthly reviews": "Report mensili", "Designed and developed by me with Claude Code, deployed on Vercel.": "Progettato e sviluppato da me con Claude Code, online su Vercel.", "Brand & product": "Brand e prodotto", "Content & campaigns": "Contenuti e campagne", "Funnels & metrics": "Funnel e metriche", "For creators & influencers": "Per creator e influencer", "For creators who already have an audience and want to turn it into a real brand and a business.": "Per creator che hanno già un pubblico e vogliono trasformarlo in un vero brand e in un business.", "You have an audience but don’t know how to monetise it. We find your real brand: how you’re different from others and where you bring value.": "Hai un pubblico ma non sai come monetizzarlo. Troviamo il tuo vero brand: cosa ti distingue dagli altri e dove porti valore.", "You have an idea you could sell, like a course, lectures, an app or a programme, but don’t know how to build it, test it and run it.": "Hai l’idea di un prodotto da vendere, come un corso, delle lezioni, un’app o un programma, ma non sai come costruirlo, testarlo e gestirlo.", "Testing": "Test", "Content growth": "Crescita dei contenuti", "You’re not sure how to grow your content pillars or which formats to adopt to keep growing.": "Non sai come sviluppare i tuoi pilastri di contenuto o quali formati adottare per continuare a crescere.", "Growth": "Crescita", "Brand & campaigns": "Brand e campagne", "You need a hand with brand management and organising campaigns.": "Ti serve una mano con la gestione del brand e l’organizzazione delle campagne.", "You don’t know how to build a funnel that turns followers into customers, for both B2C and B2B clients.": "Non sai come costruire un funnel che trasformi i follower in clienti, sia B2C sia B2B.", "Follower → customer": "Da follower a cliente", "B2C funnels": "Funnel B2C", "B2B funnels": "Funnel B2B", "Metrics & KPIs": "Metriche e KPI", "You don’t know which metrics and KPIs to adopt to review your progress.": "Non sai quali metriche e KPI adottare per valutare i tuoi progressi.", "Metrics": "Metriche", "Progress reviews": "Revisione dei progressi", "Strategy, production and digital product under one roof: I find what makes a brand matter, run the production that brings it to life, and build the digital products around it.": "Strategia, produzione e prodotto digitale in un unico punto di riferimento: individuo ciò che rende un brand rilevante, guido la produzione che gli dà vita e sviluppo i prodotti digitali che lo accompagnano.", "Production": "Produzione", "Digital product development": "Sviluppo di prodotti digitali", "Presales & pitches": "Prevendita e pitch", "The full cycle starts here: presales, pitches and the first ideas.": "Il ciclo completo parte da qui: prevendita, pitch e le prime idee.", "Pitches": "Pitch", "Team & providers": "Team e fornitori", "Putting together the team and providers, setting timelines and handling client accounting.": "Mettere insieme team e fornitori, definire le tempistiche e gestire la contabilità clienti.", "Providers": "Fornitori", "Creative direction & delivery": "Direzione creativa e consegna", "Creative direction and management. The jack of all trades who makes sure things actually happen and we deliver.": "Direzione creativa e gestione. La persona tuttofare che fa succedere le cose e garantisce la consegna.", "Management": "Gestione", "Delivery": "Consegna", "Landing pages & flows": "Landing page e flussi", "Landing pages and end-to-end design flows.": "Landing page e flussi di design end-to-end.", "Design flows": "Flussi di design", "Research & testing": "Ricerca e test", "UX/CX research, usability testing and UX reviews.": "Ricerca UX/CX, test di usabilità e revisioni UX.", "Components & copy": "Componenti e copy", "Organising component libraries, copy and storytelling.": "Organizzazione delle librerie di componenti, copy e storytelling.", "AI & no-code building": "AI e no-code", "Vibecoding, building products in Notion, and keeping design in sync between Figma and Claude.": "Vibecoding, sviluppo di prodotti in Notion e sincronizzazione del design tra Figma e Claude.", "For design studios & start-ups": "Per studi di design e startup", "For creators": "Per creator", "Brand strategy": "Strategia di brand", "Value proposition & fit": "Proposta di valore e fit", "What makes the brand unique: its emotional or technical value proposition, and whether there is product–market fit.": "Cosa rende unico il brand: la sua proposta di valore emotiva o tecnica, e se c’è product–market fit.", "Benchmarking & directions": "Benchmarking e direzioni", "Competitor benchmarking and the potential directions the brand could take.": "Benchmarking dei competitor e le possibili direzioni del brand.", "Audience & customer": "Pubblico e cliente", "Who the audience, the customer and the follower are, their customer journey and how they make decisions.": "Chi sono il pubblico, il cliente e il follower, il loro customer journey e come prendono decisioni.", "Channels & entry points": "Canali e punti di ingresso", "The best channels for marketing, sales and promotion, and where people first come in.": "I canali migliori per marketing, vendite e promozione, e i punti in cui le persone entrano per la prima volta.", "From findings to visuals": "Dai dati alle immagini", "Turning the findings into visual directions with art directors: communication strategy and moodboards.": "Tradurre i risultati in direzioni visive con gli art director: strategia di comunicazione e moodboard.", "Personal brand & positioning": "Personal brand e posizionamento", "What you stand for, who it is for, and how you say it.": "Cosa rappresenti, per chi, e come lo racconti.", "Offers & funnels": "Offerta e funnel", "Services, products and the funnel that takes followers to customers.": "Servizi, prodotti e il funnel che trasforma i follower in clienti.", "Content strategy": "Strategia di contenuti", "Content pillars, formats and the channels that fit your audience.": "Pilastri dei contenuti, formati e i canali giusti per il tuo pubblico.", "Creative production": "Produzione creativa", "Hands-on production for launches, campaigns and shoots.": "Produzione operativa per lanci, campagne e shooting.", "Audience vs customer": "Pubblico vs cliente", "Decision-making": "Processo decisionale", "Channels": "Canali", "Entry points": "Punti di ingresso", "Communication strategy": "Strategia di comunicazione", "Brand directions": "Direzioni di brand", "Positioning": "Posizionamento", "Offer design": "Design dell’offerta", "Launches": "Lanci"};
+  const IT = {"Work": "Esperienze", "Services": "Servizi", "Send me a message": "Scrivimi", "Brand strategy, Research, Production": "Strategia di brand, Ricerca, Produzione", ", Italy.": ", Italia.", "I turn": "Trasformo la", "I turn research into positioning, and positioning into work that ships, for brands, studios and creators.": "Trasformo la ricerca in posizionamento, e il posizionamento in progetti che arrivano sul mercato, per brand, studi e creator.", "creative producer": "creative producer", "brand strategist": "brand strategist", "Play a game": "Gioca", "Play": "Gioca", "Hello": "Ciao", ", I’m a": ", sono una", "and": "e", "based in Umbria": "di base in Umbria", ", Italy. I turn": ", Italia. Trasformo la", "research": "ricerca", "into": "in", "positioning": "posizionamento", ", and positioning into": ", e il posizionamento in", "work that ships": "progetti che arrivano sul mercato", ", for brands, studios and": ", per brand, studi e", "creators": "creator", "2026 – Now": "2026 – oggi", "2025 – Now": "2025 – oggi", "2022 – 2025": "2022 – 2025", "2020 – 2022": "2020 – 2022", "2019 – 2020": "2019 – 2020", "2018 – 2019": "2018 – 2019", "Creative Producer, startups & creators": "Creative Producer per startup e creator", "Freelance, working with creators": "Freelance, lavoro con creator", "Movemeon, London": "Movemeon, Londra", "End-to-end creative production for Italian and international clients: brand research, positioning, strategy and execution across branding and social media.": "Produzione creativa end-to-end per clienti italiani e internazionali: ricerca di brand, posizionamento, strategia ed esecuzione per branding e social media.", "Research, funnels, service, product and content strategy for creators and founders, including Hanna Gets Hired (130K+ audience) and Leyla Nees.": "Ricerca, funnel, strategia di servizio, prodotto e contenuti per creator e founder, tra cui Hanna Gets Hired (oltre 130K follower) e Leyla Nees.", "Ran the full production team: weekly goals, resourcing and assignments. Led presales, upsells, accounting and crisis management across 100+ startup clients, including the Y Combinator portfolio. Shaped client strategy through ICP research, A/B testing and UVP definition, with quality oversight across branding and marketing work.": "Ho guidato l’intero team di produzione: obiettivi settimanali, allocazione delle risorse e assegnazione dei progetti. Ho seguito prevendita, upselling, accounting e crisis management per oltre 100 startup, tra cui il portfolio Y Combinator. Ho impostato la strategia dei clienti attraverso ricerca sull’ICP, A/B test e definizione della UVP, supervisionando la qualità dei lavori di branding e marketing.", "Usability research and testing, UX/UI design, strategic design direction and dev team grooming.": "Ricerca e test di usabilità, design UX/UI, direzione strategica del design e coordinamento del team di sviluppo.", "Original benchmarking, usability research and testing, client proposals and copywriting.": "Benchmarking su misura, ricerca e test di usabilità, proposte commerciali e copywriting.", "UX/UI design and development of the main product and its marketing assets.": "Design UX/UI e sviluppo del prodotto principale e dei materiali di marketing.", "Brand research & benchmarking": "Ricerca di brand e benchmarking", "Positioning & brand strategy": "Posizionamento e strategia di brand", "Personal brands for creators": "Personal branding per creator", "Fractional creative production": "Produzione creativa part-time", "Pitch & presales strategy": "Strategia di pitch e prevendita", "Italian market entry": "Ingresso nel mercato italiano", "Languages & education": "Lingue & formazione", "English": "Inglese", "Italian": "Italiano", "Russian": "Russo", "Native": "Madrelingua", "MSc Research Methods": "MSc in Metodi di ricerca", "UCL London, 2016": "UCL Londra, 2016", "Say": "Say ciao", "What makes the brand different": "Cosa rende unico il brand", "The competitive landscape": "Il panorama competitivo", "Competitor audit": "Analisi dei competitor", "Positioning map": "Mappa di posizionamento", "Brand territories": "Territori di brand", "Who buys and why": "Chi compra e perché", "Buyer psychology": "Psicologia d’acquisto", "Where to show up": "Dove farsi trovare", "Channel mix": "Mix di canali", "Touchpoints": "Touchpoint", "From insight to image": "Dall’insight all’immagine", "Creative brief": "Brief creativo", "Moodboards": "Moodboard", "Winning the work": "Conquistare il cliente", "Presales": "Prevendita", "Pitch decks": "Pitch deck", "Ideation": "Ideazione", "Team & logistics": "Team & logistica", "Team building": "Composizione del team", "Suppliers": "Fornitori", "Timelines": "Tempistiche", "Client accounting": "Contabilità clienti", "Making it happen": "Portare a casa il progetto", "Creative direction": "Direzione creativa", "Quality control": "Controllo qualità", "Pages that convert": "Pagine che convertono", "Landing pages": "Landing page", "User flows": "User flow", "Wireframes": "Wireframe", "Testing with real people": "Test con utenti reali", "UX/CX research": "Ricerca UX/CX", "Usability testing": "Test di usabilità", "UX review": "Revisione UX", "Systems & words": "Struttura & testi", "Component library": "Libreria di componenti", "Building with AI": "Costruire con l’AI", "Your real brand": "Il tuo vero brand", "Monetisation": "Monetizzazione", "Niche": "Nicchia", "Your product": "Il tuo prodotto", "Courses": "Corsi", "Lectures": "Lezioni", "Apps": "App", "Programmes": "Programmi", "Growing your content": "Far crescere i contenuti", "Content pillars": "Pilastri editoriali", "Formats": "Formati", "Editorial calendar": "Piano editoriale", "An extra pair of hands": "Una mano in più", "Brand management": "Gestione del brand", "Campaigns": "Campagne", "Brand deals": "Brand deal", "From follower to client": "Da follower a cliente", "Funnels": "Funnel", "Lead magnets": "Lead magnet", "Knowing what works": "Capire cosa funziona", "KPIs": "KPI", "Monthly reviews": "Report mensili", "Designed and developed by me with Claude Code, deployed on Vercel.": "Progettato e sviluppato da me con Claude Code, online su Vercel.", "Brand & product": "Brand & prodotto", "Content & campaigns": "Contenuti & campagne", "Funnels & metrics": "Funnel & metriche", "For creators & influencers": "Per creator & influencer", "You have an audience but don’t know how to monetise it. We find your real brand: how you’re different from others and where you bring value.": "Hai un pubblico ma non sai come monetizzarlo. Troviamo il tuo vero brand: cosa ti distingue dagli altri e dove porti valore.", "You have an idea you could sell, like a course, lectures, an app or a programme, but don’t know how to build it, test it and run it.": "Hai l’idea di un prodotto da vendere, come un corso, delle lezioni, un’app o un programma, ma non sai come costruirlo, testarlo e gestirlo.", "Testing": "Test", "Content growth": "Crescita dei contenuti", "You’re not sure how to grow your content pillars or which formats to adopt to keep growing.": "Non sai come sviluppare i tuoi pilastri di contenuto o quali formati adottare per continuare a crescere.", "Growth": "Crescita", "Brand & campaigns": "Brand e campagne", "You need a hand with brand management and organising campaigns.": "Ti serve una mano con la gestione del brand e l’organizzazione delle campagne.", "You don’t know how to build a funnel that turns followers into customers, for both B2C and B2B clients.": "Non sai come costruire un funnel che trasformi i follower in clienti, sia B2C sia B2B.", "Follower → customer": "Da follower a cliente", "B2C funnels": "Funnel B2C", "B2B funnels": "Funnel B2B", "Metrics & KPIs": "Metriche e KPI", "You don’t know which metrics and KPIs to adopt to review your progress.": "Non sai quali metriche e KPI adottare per valutare i tuoi progressi.", "Metrics": "Metriche", "Progress reviews": "Revisione dei progressi", "Production": "Produzione", "Digital product development": "Sviluppo di prodotti digitali", "Presales & pitches": "Prevendita e pitch", "The full cycle starts here: presales, pitches and the first ideas.": "Il ciclo completo parte da qui: prevendita, pitch e le prime idee.", "Pitches": "Pitch", "Team & providers": "Team e fornitori", "Putting together the team and providers, setting timelines and handling client accounting.": "Mettere insieme team e fornitori, definire le tempistiche e gestire la contabilità clienti.", "Providers": "Fornitori", "Creative direction & delivery": "Direzione creativa e consegna", "Creative direction and management. The jack of all trades who makes sure things actually happen and we deliver.": "Direzione creativa e gestione. La persona tuttofare che fa succedere le cose e garantisce la consegna.", "Management": "Gestione", "Delivery": "Consegna", "Landing pages & flows": "Landing page e flussi", "Landing pages and end-to-end design flows.": "Landing page e flussi di design end-to-end.", "Design flows": "Flussi di design", "Research & testing": "Ricerca e test", "UX/CX research, usability testing and UX reviews.": "Ricerca UX/CX, test di usabilità e revisioni UX.", "Components & copy": "Componenti e copy", "Organising component libraries, copy and storytelling.": "Organizzazione delle librerie di componenti, copy e storytelling.", "AI & no-code building": "AI e no-code", "Vibecoding, building products in Notion, and keeping design in sync between Figma and Claude.": "Vibecoding, sviluppo di prodotti in Notion e sincronizzazione del design tra Figma e Claude.", "For design studios & start-ups": "Per studi di design & startup", "For creators": "Per creator", "Brand strategy": "Strategia di brand", "Value proposition & fit": "Proposta di valore e fit", "What makes the brand unique: its emotional or technical value proposition, and whether there is product–market fit.": "Cosa rende unico il brand: la sua proposta di valore emotiva o tecnica, e se c’è product–market fit.", "Benchmarking & directions": "Benchmarking e direzioni", "Competitor benchmarking and the potential directions the brand could take.": "Benchmarking dei competitor e le possibili direzioni del brand.", "Audience & customer": "Pubblico e cliente", "Who the audience, the customer and the follower are, their customer journey and how they make decisions.": "Chi sono il pubblico, il cliente e il follower, il loro customer journey e come prendono decisioni.", "Channels & entry points": "Canali e punti di ingresso", "The best channels for marketing, sales and promotion, and where people first come in.": "I canali migliori per marketing, vendite e promozione, e i punti in cui le persone entrano per la prima volta.", "From findings to visuals": "Dai dati alle immagini", "Turning the findings into visual directions with art directors: communication strategy and moodboards.": "Tradurre i risultati in direzioni visive con gli art director: strategia di comunicazione e moodboard.", "Personal brand & positioning": "Personal brand e posizionamento", "What you stand for, who it is for, and how you say it.": "Cosa rappresenti, per chi, e come lo racconti.", "Offers & funnels": "Offerta e funnel", "Services, products and the funnel that takes followers to customers.": "Servizi, prodotti e il funnel che trasforma i follower in clienti.", "Content strategy": "Strategia di contenuti", "Content pillars, formats and the channels that fit your audience.": "Pilastri dei contenuti, formati e i canali giusti per il tuo pubblico.", "Creative production": "Produzione creativa", "Hands-on production for launches, campaigns and shoots.": "Produzione operativa per lanci, campagne e shooting.", "Audience vs customer": "Pubblico vs cliente", "Decision-making": "Processo decisionale", "Channels": "Canali", "Entry points": "Punti di ingresso", "Communication strategy": "Strategia di comunicazione", "Brand directions": "Direzioni di brand", "Positioning": "Posizionamento", "Offer design": "Design dell’offerta", "Launches": "Lanci", "The real reason people choose the brand.": "Il vero motivo per cui si sceglie il brand.", "Who’s out there, and where the open space is.": "Chi c’è sul mercato e dove resta spazio.", "Followers vs clients, and every step to a sale.": "Follower vs clienti e il percorso d’acquisto.", "Where marketing, sales and promotion should live.": "Dove puntare su marketing, vendite e promozione.", "Research turned into a look and a voice.": "La ricerca tradotta in estetica e voce.", "From the first call to the signed deal.": "Dalla prima call al contratto firmato.", "The right crew, on time and on budget.": "Il team giusto, nei tempi e nel budget.", "Hands-on direction, all the way to delivery.": "Direzione sul campo, fino alla consegna.", "From the first click to the sign-up.": "Dal primo click all’iscrizione.", "How people really use the product.": "Come le persone usano davvero il prodotto.", "A tidy design system and words with a voice.": "Un design system ordinato e testi con una voce.", "Working prototypes, shipped fast.": "Prototipi funzionanti, in tempi rapidi.", "What makes you different, and worth paying for.": "Cosa ti distingue e per cosa ti pagherebbero.", "Shaped, tested with your audience and launched.": "Definito, testato con il pubblico e lanciato.", "What to post, so your audience keeps growing.": "Cosa pubblicare per far crescere il pubblico.", "Your brand and launches, run day to day.": "Brand e lanci, gestiti ogni giorno.", "Turning people who watch into people who buy.": "Da chi ti guarda a chi compra.", "The few numbers that matter, checked monthly.": "I pochi numeri che contano, ogni mese.", "From strategy to delivery: brand, production and digital product.": "Dalla strategia alla consegna: brand, produzione e prodotto digitale.", "For creators ready to turn an audience into a business.": "Per creator pronti a trasformare il pubblico in un business."};
   const btn = document.getElementById('lang');
   const nodes = [];
   const walk = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
@@ -940,7 +1020,14 @@ document.getElementById('email').addEventListener('click', async (e) => {
     const h = { x: snake[0].x + D[dir][0], y: snake[0].y + D[dir][1] };
     if (h.x < 0 || h.y < 0 || h.x >= N || h.y >= N || snake.some(p => p.x === h.x && p.y === h.y)) {
       over = true; clearInterval(timer);
-      msg.textContent = matchMedia('(pointer: coarse)').matches ? T('Game over. Tap an arrow to play again', 'Game over. Tocca una freccia per rigiocare') : T('Game over. Press an arrow or Enter to play again', 'Game over. Premi una freccia o Invio per rigiocare');
+      const pick = a => a[Math.floor(Math.random() * a.length)];
+      const again = matchMedia('(pointer: coarse)').matches ? T('Tap an arrow for a rematch', 'Tocca una freccia per la rivincita') : T('Arrow or Enter for a rematch', 'Freccia o Invio per la rivincita');
+      const quip = score === 0
+        ? pick([[ 'Zero points. Bold strategy.', 'Zero punti. Strategia audace.' ], [ 'Well, that was quick.', 'Beh, è stato veloce.' ], [ 'The wall came out of nowhere, right?', 'Il muro è sbucato dal nulla, vero?' ]])
+        : score < 100
+        ? pick([[ 'Ouch! ' + score + ' points before the crash.', 'Ahia! ' + score + ' punti prima dello schianto.' ], [ 'Snake ate himself. Happens to the best.', 'Il serpente si è mangiato. Capita ai migliori.' ], [ 'Not bad. My 9-year-old self scored more.', 'Niente male. Io a 9 anni facevo di più.' ]])
+        : pick([[ score + ' points! Nokia would be proud.', score + ' punti! Nokia sarebbe fiero.' ], [ 'Respect. ' + score + ' points of pure skill.', 'Rispetto. ' + score + ' punti di puro talento.' ], [ 'Okay, you can be my creative director.', 'Ok, puoi fare il mio direttore creativo.' ]]);
+      msg.textContent = T(quip[0], quip[1]) + ' ' + again;
       draw(); return;
     }
     snake.unshift(h);
@@ -956,7 +1043,9 @@ document.getElementById('email').addEventListener('click', async (e) => {
     const m = Math.floor(N / 2);
     snake = [{ x: m, y: m, c: 0 }, { x: m - 1, y: m, c: 1 }, { x: m - 2, y: m, c: 2 }];
     dir = next = 'right'; score = 0; over = false; started = false; speed = 160; scoreEl.textContent = 0;
-    msg.textContent = T('Press an arrow or swipe to start', 'Premi una freccia o scorri per iniziare');
+    const hi = [[ 'Feed me. Press an arrow or swipe.', 'Ho fame. Premi una freccia o scorri.' ], [ 'Hungry snake, ready to go. Arrow or swipe.', 'Serpente affamato, pronto. Freccia o scorri.' ], [ 'Avoid walls. Avoid yourself. Eat squares.', 'Evita i muri. Evita te stesso. Mangia quadrati.' ]];
+    const h0 = hi[Math.floor(Math.random() * hi.length)];
+    msg.textContent = T(h0[0], h0[1]);
     place(); draw(); clearInterval(timer);
   };
   const turn = (k) => {
@@ -979,19 +1068,18 @@ document.getElementById('email').addEventListener('click', async (e) => {
     document.getElementById('g-lbl').textContent = T('Score', 'Punti');
     const touch = matchMedia('(hover: none), (pointer: coarse)').matches;
     document.getElementById('g-help').textContent = touch
-      ? T('Swipe anywhere (up, down, left, right) or tap the arrows to steer', 'Scorri ovunque (su, giù, sinistra, destra) o tocca le frecce per girare')
-      : T('Arrow keys to steer · Esc close', 'Frecce per girare · Esc chiude');
-    document.getElementById('g-close').setAttribute('aria-label', T('Close game', 'Chiudi gioco'));
+      ? T('Swipe or tap the arrows. Don’t bite your tail.', 'Scorri o tocca le frecce. Non morderti la coda.')
+      : T('Arrows to steer · Esc to quit · don’t bite your tail', 'Frecce · Esc per uscire · non morderti la coda');
+    document.getElementById('g-close').setAttribute('aria-label', T('Close game', 'Chiudi gioco')); document.getElementById('g-note-x').setAttribute('aria-label', T('Close note', 'Chiudi nota'));
     document.getElementById('g-note').textContent = T(
-      'My mother bought me my first Nokia when I was 9 years old. The most important part of that Nokia was the Snake game, which made me fall in love with all things design and computers. Please come back later: I’m adding progressive levels of difficulty and golden eggs.',
-      'Mia madre mi ha regalato il mio primo Nokia quando avevo 9 anni. La parte più importante di quel Nokia era il gioco Snake, che mi ha fatto innamorare di tutto ciò che è design e computer. Torna più tardi: sto aggiungendo livelli di difficoltà progressivi e uova d’oro.');
+      'My mother bought me my first Nokia\u00a0☏ when I was 9 years old. The most important part of that Nokia was the Snake game\u00a0✦, which made me fall in love with all things design and computers\u00a0♡. Please come back later: I’m adding progressive levels of difficulty and golden eggs\u00a0✶.',
+      'Mia madre mi ha regalato il mio primo Nokia\u00a0☏ quando avevo 9 anni. La parte più importante di quel Nokia era il gioco Snake\u00a0✦, che mi ha fatto innamorare di tutto ciò che è design e computer\u00a0♡. Torna più tardi: sto aggiungendo livelli di difficoltà progressivi e uova d’oro\u00a0✶.');
     game.classList.remove('started');
     game.hidden = false; document.body.style.overflow = 'hidden';
-    if (matchMedia('(max-width: 640px)').matches && game.requestFullscreen && !document.fullscreenElement) game.requestFullscreen().catch(() => {});
     addEventListener('keydown', onKey); start(); document.getElementById('g-close').focus();
   };
   ['pointerdown', 'keydown'].forEach(t => game.addEventListener(t, e => { if (!e.target.closest || !e.target.closest('.g-x')) game.classList.add('started'); }));
-  const close = () => { if (document.fullscreenElement) document.exitFullscreen().catch(() => {}); clearInterval(timer); game.hidden = true; document.body.style.overflow = ''; removeEventListener('keydown', onKey); if (lastFocus) lastFocus.focus(); };
+  const close = () => { clearInterval(timer); game.hidden = true; document.body.style.overflow = ''; removeEventListener('keydown', onKey); if (lastFocus) lastFocus.focus(); };
   document.getElementById('play').addEventListener('click', open);
   const pt = document.getElementById('play-top'); if (pt) pt.addEventListener('click', open);
   document.getElementById('g-close').addEventListener('click', close);
@@ -1047,3 +1135,82 @@ document.getElementById('email').addEventListener('click', async (e) => {
 </script>
 </body>
 </html>
+
+<script>
+/* fallback for browsers without text-wrap: glue the last two words so a line never ends with one lonely word */
+(() => {
+  const sel = '.svc-d, .svc-sum, .jd, .g-note, .statement .s2, .svc-st, footer span';
+  /* short words (e, il, la, di, a, in, un, con, per, the, of…) never end a line: tie them to the next word */
+  let shortRe = null; try { shortRe = new RegExp('(^|[\\s\\u00a0(«“])([^\\s\\u00a0]{1,3}) (?=[^\\s])', 'g'); } catch (e) {}
+  const tieShort = root => {
+    if (!shortRe) return;
+    const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, { acceptNode: n => n.parentElement.closest('.g, .fw') ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT });
+    let n; while ((n = w.nextNode())) {
+      let v = n.nodeValue, prev;
+      do { prev = v; v = v.replace(shortRe, '$1$2\u00a0'); } while (v !== prev);
+      if (v !== n.nodeValue) n.nodeValue = v;
+    }
+  };
+  const tieSel = '.statement, .svc-d, .svc-sum, .svc-st, .svc-h, .jd, footer span, .plain li, .row .where, section h2 .toggle > span:first-child, .svc-tab';
+  const tieOne = el => { const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT); let n; while ((n = w.nextNode())) { const v = n.nodeValue.replace(/(^|\s)(\S) (?=\S)/g, '$1$2\u00a0'); if (v !== n.nodeValue) n.nodeValue = v; } };
+  const glue = () => { document.querySelectorAll(tieSel).forEach(tieShort); document.querySelectorAll('#g-note').forEach(tieOne); document.querySelectorAll(sel).forEach(el => {
+    const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT); let last = null, n;
+    while ((n = w.nextNode())) if (n.nodeValue.trim()) last = n;
+    if (last) { const v = last.nodeValue, t = v.trimEnd(), i = Math.max(t.lastIndexOf(' '), t.lastIndexOf('\u00a0')); if (i > 0 && t[i] === ' ') last.nodeValue = v.slice(0, i) + '\u00a0' + v.slice(i + 1); }
+  }); };
+  glue(); addEventListener('resize', () => requestAnimationFrame(glue));
+  document.getElementById('lang')?.addEventListener('click', () => setTimeout(glue, 0));
+  const obs = new MutationObserver(() => requestAnimationFrame(glue)); const note = document.getElementById('g-note'); if (note) obs.observe(note, { childList: true });
+})();
+</script>
+
+<script>
+/* touch (or click) the intro: every word drifts and tilts like the floating squares, then settles.
+   Words are copied onto a layer at their exact on-screen spots, so nothing jumps before the float starts. */
+(() => {
+  const st = document.querySelector('.statement'); if (!st) return;
+  let layer = null, timer = 0;
+  const stop = () => { clearTimeout(timer); if (layer) { layer.remove(); layer = null; } st.classList.remove('floating'); };
+  const r = (a, b) => a + Math.random() * (b - a);
+  const go = () => {
+    if (layer || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const box = st.getBoundingClientRect();
+    layer = document.createElement('div'); layer.className = 'float-layer'; layer.setAttribute('aria-hidden', 'true');
+    const w = document.createTreeWalker(st, NodeFilter.SHOW_TEXT, { acceptNode: n => n.parentElement.closest('.g') || !n.nodeValue.trim() ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT });
+    const nodes = []; let n; while ((n = w.nextNode())) nodes.push(n);
+    const rg = document.createRange();
+    nodes.forEach(node => {
+      const cs = getComputedStyle(node.parentElement);
+      const font = { fontFamily: cs.fontFamily, fontSize: cs.fontSize, fontStyle: cs.fontStyle, fontWeight: cs.fontWeight, letterSpacing: cs.letterSpacing, color: cs.color };
+      const v = node.nodeValue; let seg = null;
+      const flush = () => {
+        if (!seg || !seg.text.trim()) { seg = null; return; }
+        const d = document.createElement('span'); d.className = 'fw'; d.textContent = seg.text.trim() + (seg.hy ? '-' : '');
+        Object.assign(d.style, font, { left: (seg.l - box.left) + 'px', top: (seg.t - box.top) + 'px', height: seg.h + 'px', lineHeight: seg.h + 'px' });
+        d.style.setProperty('--tx', r(-60, 60).toFixed(0) + 'px'); d.style.setProperty('--ty', r(-45, 45).toFixed(0) + 'px');
+        d.style.setProperty('--rot', r(-25, 25).toFixed(0) + 'deg'); d.style.setProperty('--fdl', r(0, .6).toFixed(2) + 's'); d.style.setProperty('--fd', r(6, 8).toFixed(2) + 's');
+        layer.appendChild(d); seg = null;
+      };
+      for (let k = 0; k < v.length; k++) {
+        const ch = v[k];
+        if (/\s/.test(ch)) { flush(); continue; }
+        rg.setStart(node, k); rg.setEnd(node, k + 1);
+        const rc = rg.getClientRects()[0]; if (!rc) continue;
+        if (seg && Math.abs(rc.top - seg.t) > 2) { seg.hy = true; flush(); }
+        if (!seg) seg = { text: '', l: rc.left, t: rc.top, h: rc.height };
+        seg.text += ch;
+      }
+      flush();
+    });
+    st.appendChild(layer); st.classList.add('floating');
+    timer = setTimeout(stop, 8800);
+  };
+  st.addEventListener('pointerdown', go);
+  document.getElementById('lang')?.addEventListener('pointerdown', stop, true);
+  addEventListener('resize', () => { if (layer) stop(); });
+})();
+</script>
+
+<script>
+document.getElementById('g-note-x')?.addEventListener('click', e => { e.stopPropagation(); document.getElementById('g-note-box').hidden = true; });
+</script>
