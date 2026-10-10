@@ -639,7 +639,7 @@ html { scroll-behavior: smooth; }
 .jd { hyphens: manual; text-wrap: pretty; }
 @media (max-width: 640px) { .jd { text-wrap: pretty; } }
 
-@media (max-width: 640px) { html[lang="it"] .statement { font-size: 28px; } }
+@media (max-width: 640px) { .statement { font-size: 28px !important; line-height: 1.08; } .statement .s2 { font-size: 17px !important; } }
 </style>
 </head>
 <body>
@@ -1297,7 +1297,7 @@ document.addEventListener('click', e => {
     let n = 0, last = -1e9; cs.forEach(c => { if (c - last > fs * .6) { n++; last = c; } }); return n;
   };
   const fit = () => {
-    if (!matchMedia('(max-width: 640px)').matches || document.documentElement.lang === 'it') { st.style.fontSize = ''; s2.style.fontSize = ''; return; }
+    if (true) { st.style.fontSize = ''; s2.style.fontSize = ''; return; }
     s2.style.fontSize = '14px';
     let lo = 16, hi = 40;
     for (let i = 0; i < 12; i++) { const mid = (lo + hi) / 2; st.style.fontSize = mid + 'px'; if (lines() <= 2) lo = mid; else hi = mid; }
