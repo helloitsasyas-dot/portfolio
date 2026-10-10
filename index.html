@@ -606,6 +606,12 @@ section:has(.toggle[aria-expanded="true"]) { padding-bottom: clamp(44px, 5vw, 76
 
 .g-note { transition: opacity .4s ease; }
 .g-note.fade { opacity: 0; }
+
+/* closing / fading the note never moves the game: it keeps its space (or floats on big screens) */
+.g-note.gone { visibility: hidden; pointer-events: none; }
+@media (min-width: 1024px) {
+  .g-note { position: fixed !important; top: 24px; right: 24px; width: 300px !important; max-width: 300px !important; margin: 0 !important; z-index: 2; box-shadow: 0 8px 30px rgba(0,0,0,.35); }
+}
 </style>
 </head>
 <body>
@@ -1226,13 +1232,13 @@ document.getElementById('email').addEventListener('click', async (e) => {
 (() => {
   const box = document.getElementById('g-note-box'), game = document.getElementById('game'); if (!box || !game) return;
   let t = 0;
-  const hide = () => { clearTimeout(t); box.classList.add('fade'); setTimeout(() => { box.hidden = true; box.classList.remove('fade'); }, 400); };
+  const hide = () => { clearTimeout(t); box.classList.add('fade'); setTimeout(() => box.classList.add('gone'), 400); };
   document.getElementById('g-note-x')?.addEventListener('click', e => { e.stopPropagation(); hide(); });
   const seen = () => { try { return localStorage.getItem('asya-note-seen') === '1'; } catch (e) { return false; } };
   new MutationObserver(() => {
     if (game.hidden) { clearTimeout(t); return; }
     if (seen()) { box.hidden = true; return; }
-    box.hidden = false; try { localStorage.setItem('asya-note-seen', '1'); } catch (e) {}
+    box.hidden = false; box.classList.remove('fade', 'gone'); try { localStorage.setItem('asya-note-seen', '1'); } catch (e) {}
     clearTimeout(t); t = setTimeout(hide, 60000);
   }).observe(game, { attributes: true, attributeFilter: ['hidden'] });
 })();
