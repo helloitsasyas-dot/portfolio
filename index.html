@@ -557,6 +557,7 @@ section:has(.toggle[aria-expanded="true"]) { padding-bottom: clamp(44px, 5vw, 76
 
 /* readable line length for the job descriptions in the wider column */
 .jd { max-width: 68ch; }
+@media (min-width: 641px) { .jd { max-width: 58ch; } #jd6 { max-width: 44ch; } }
 
 /* web: smaller text inside the small buttons, same button size */
 @media (min-width: 1024px) {
@@ -568,8 +569,8 @@ section:has(.toggle[aria-expanded="true"]) { padding-bottom: clamp(44px, 5vw, 76
 @media (max-width: 1023px) {
   .lang, .play.mini { width: 124px; height: 34px; justify-content: center; box-sizing: border-box; }
 }
-/* iPad, web, desktop: job titles on one line */
-@media (min-width: 641px) {
+/* all screens: job titles on one line */
+@media (min-width: 0px) {
   #work button.role { max-width: none; white-space: nowrap; }
 }
 
@@ -612,6 +613,25 @@ section:has(.toggle[aria-expanded="true"]) { padding-bottom: clamp(44px, 5vw, 76
 .g-note.gone { visibility: hidden; pointer-events: none; }
 @media (min-width: 1024px) {
   .g-note { position: fixed !important; top: 24px; right: 24px; width: 300px !important; max-width: 300px !important; margin: 0 !important; z-index: 2; box-shadow: 0 8px 30px rgba(0,0,0,.35); }
+}
+
+/* web: the three big contact buttons are scattered across the bottom right, slightly tilted */
+@media (min-width: 1024px) {
+  .mail > .socials { gap: 14px; }
+  .socials .pill:nth-child(1) { margin-right: 34%; transform: rotate(-7deg); }
+  .socials .pill:nth-child(2) { margin-right: 0; transform: rotate(5deg); margin-top: 6px; }
+  .socials .pill:nth-child(3) { margin-right: 18%; transform: rotate(-3deg); margin-top: 10px; }
+}
+
+/* links like "Send me a message" glide to their section */
+html { scroll-behavior: smooth; }
+#contact, section { scroll-margin-top: 24px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* web: calmer section labels and job titles */
+@media (min-width: 1024px) {
+  section > h2, section > h2 .toggle { font-size: clamp(22px, 1.75vw, 28px) !important; }
+  #work button.role, .svc-h { font-size: clamp(20px, 1.6vw, 26px) !important; }
 }
 </style>
 </head>
@@ -1224,7 +1244,7 @@ document.getElementById('email').addEventListener('click', async (e) => {
   };
   st.addEventListener('pointerdown', go);
   document.getElementById('lang')?.addEventListener('pointerdown', stop, true);
-  addEventListener('resize', () => { if (layer) stop(); });
+  let lastW = innerWidth; addEventListener('resize', () => { if (layer && Math.abs(innerWidth - lastW) > 40) stop(); lastW = innerWidth; });
 })();
 </script>
 
@@ -1245,3 +1265,16 @@ document.getElementById('email').addEventListener('click', async (e) => {
 })();
 </script>
 <script>document.documentElement.setAttribute('translate','no');document.documentElement.classList.add('notranslate');</script>
+
+<script>
+/* smooth scroll for in-page links (also closes the mobile menu first) */
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="#"]'); if (!a) return;
+  const t = document.querySelector(a.getAttribute('href')); if (!t) return;
+  e.preventDefault();
+  document.documentElement.classList.remove('menu-open');
+  const b = document.getElementById('burger'); if (b) b.setAttribute('aria-expanded', 'false');
+  requestAnimationFrame(() => t.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' }));
+  history.replaceState(null, '', a.getAttribute('href'));
+});
+</script>
