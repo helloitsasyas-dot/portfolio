@@ -649,6 +649,8 @@ section > h2, section > h2 .toggle { white-space: nowrap; }
 
 .statement .sp { display: inline-block; width: .14em; }
 </style>
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 <div class="dots float" aria-hidden="true">
@@ -1305,7 +1307,7 @@ document.addEventListener('click', e => {
     let n = 0, last = -1e9; cs.forEach(c => { if (c - last > fs * .6) { n++; last = c; } }); return n;
   };
   const fit = () => {
-    if (true) { st.style.fontSize = ''; s2.style.fontSize = ''; return; }
+    return;
     s2.style.fontSize = '14px';
     let lo = 16, hi = 40;
     for (let i = 0; i < 12; i++) { const mid = (lo + hi) / 2; st.style.fontSize = mid + 'px'; if (lines() <= 2) lo = mid; else hi = mid; }
@@ -1317,5 +1319,47 @@ document.addEventListener('click', e => {
   document.getElementById('lang')?.addEventListener('click', () => setTimeout(fit, 30));
   if (document.fonts) document.fonts.ready.then(fit);
   addEventListener('load', fit); setTimeout(fit, 800); setTimeout(fit, 2000);
+})();
+</script>
+
+<script>
+/* phones: keep the intro edge to edge, but pick the font size (25-30px) that leaves the smallest gaps between words */
+(() => {
+  const st = document.querySelector('.statement'); if (!st) return;
+  const mq = matchMedia('(max-width: 480px)');
+  const score = (fs) => {
+    const c = st.cloneNode(true);
+    c.querySelector('.s2')?.remove(); c.querySelectorAll('.float-layer').forEach(n => n.remove());
+    c.style.cssText = 'position:absolute;left:-9999px;top:0;visibility:hidden;width:' + st.clientWidth + 'px;text-align:left !important;text-align-last:left !important';
+    c.style.setProperty('font-size', fs + 'px', 'important');
+    st.parentNode.appendChild(c);
+    const W = c.clientWidth, pts = [], r = document.createRange();
+    const w = document.createTreeWalker(c, NodeFilter.SHOW_TEXT); let n;
+    while ((n = w.nextNode())) {
+      const isG = !!n.parentElement.closest('.g');
+      for (let i = 0; i < n.length; i++) {
+        r.setStart(n, i); r.setEnd(n, i + 1); const b = r.getClientRects()[0]; if (!b || b.width === 0) continue;
+        const ch = n.nodeValue[i];
+        pts.push({ y: (b.top + b.bottom) / 2, l: b.left, r: b.right, sp: !isG && ch === ' ', g: isG });
+      }
+    }
+    c.remove();
+    const base = pts.filter(p => !p.g).sort((a, b) => a.y - b.y), ls = [];
+    base.forEach(p => { const L = ls[ls.length - 1]; if (L && Math.abs(p.y - L.y) < fs * .5) { L.l = Math.min(L.l, p.l); L.r = Math.max(L.r, p.r); L.sp += p.sp; } else ls.push({ y: p.y, l: p.l, r: p.r, sp: +p.sp }); });
+    pts.filter(p => p.g).forEach(p => { let best = null; ls.forEach(L => { if (!best || Math.abs(L.y - p.y) < Math.abs(best.y - p.y)) best = L; }); if (best) { best.l = Math.min(best.l, p.l); best.r = Math.max(best.r, p.r); } });
+    ls.pop();
+    return ls.reduce((m, L) => Math.max(m, (W - (L.r - L.l)) / Math.max(L.sp, 1)), 0);
+  };
+  const fit = () => {
+    st.style.removeProperty('font-size'); return;
+    let best = 28, bs = 1e9;
+    for (let f = 23; f <= 31; f += .25) { const s = score(f); if (s < bs - .5 || (Math.abs(s - bs) <= .5 && Math.abs(f - 28) < Math.abs(best - 28))) { bs = s; best = f; } }
+    st.style.setProperty('font-size', best + 'px', 'important');
+  };
+  let w0 = 0; const run = () => { if (innerWidth !== w0) { w0 = innerWidth; fit(); } };
+  run(); addEventListener('resize', () => requestAnimationFrame(run));
+  document.getElementById('lang')?.addEventListener('click', () => setTimeout(fit, 40));
+  if (document.fonts) document.fonts.ready.then(fit);
+  addEventListener('load', fit); setTimeout(fit, 900);
 })();
 </script>
