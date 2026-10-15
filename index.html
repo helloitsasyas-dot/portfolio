@@ -694,8 +694,8 @@ section > h2, section > h2 .toggle { white-space: nowrap; }
 
 
 <section id="services">
-  <h2><button class="toggle" type="button" id="services-btn" aria-expanded="false" aria-controls="services-body"><span>Services</span><span class="sign" aria-hidden="true">+</span></button></h2>
-  <div class="svc" id="services-body" hidden>
+  <h2><button class="toggle" type="button" id="services-btn" aria-expanded="true" aria-controls="services-body"><span>Services</span><span class="sign" aria-hidden="true">+</span></button></h2>
+  <div class="svc" id="services-body">
     <div class="svc-g">
       <h3 class="svc-h">For design studios &amp; start-ups</h3>
       <p class="svc-sum">From strategy to delivery: brand, production and digital product.</p>
@@ -740,8 +740,8 @@ section > h2, section > h2 .toggle { white-space: nowrap; }
 </section>
 
 <section id="work">
-  <h2><button class="toggle" type="button" id="work-btn" aria-expanded="true" aria-controls="work-body"><span>Work</span><span class="sign" aria-hidden="true">+</span></button></h2>
-  <div class="rows" id="work-body">
+  <h2><button class="toggle" type="button" id="work-btn" aria-expanded="false" aria-controls="work-body"><span>Work</span><span class="sign" aria-hidden="true">+</span></button></h2>
+  <div class="rows" id="work-body" hidden>
     <div class="row">
       <span class="when">2026 – Now</span>
       <button class="role" type="button" aria-expanded="false" aria-controls="jd1">Creative Producer &amp; Brand Strategist <span class="jsign" aria-hidden="true">+</span></button>
@@ -1015,7 +1015,6 @@ document.getElementById('email').addEventListener('click', async (e) => {
   lockWidths();
   if (document.fonts) document.fonts.ready.then(lockWidths);
   let start = 'en';
-  try { start = localStorage.getItem('asya-lang') || 'en'; } catch (e) {}
   if (start === 'it') apply('it');
   btn.addEventListener('click', () => apply(btn.getAttribute('aria-checked') === 'true' ? 'en' : 'it'));
 })();
