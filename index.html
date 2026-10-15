@@ -352,7 +352,7 @@ body { background: #111110; }
 button.role { all: unset; cursor: pointer; display: inline-flex; align-items: baseline; gap: .45em; font-family: var(--sans); font-size: clamp(22px, 2.3vw, 36px); letter-spacing: -0.025em; line-height: 1.15; color: var(--ink); }
 button.role:focus-visible { outline: 2px solid var(--fg); outline-offset: 4px; }
 button.role:hover { color: var(--dot-orange); }
-.jsign { font-size: .6em; color: var(--dot-orange); display: inline-block; transition: transform .3s ease; }
+.jsign { font-size: .8em; color: var(--dot-orange); display: inline-block; transition: transform .3s ease; }
 button.role[aria-expanded="true"] .jsign { transform: rotate(45deg); }
 .jd.show { animation: jdin .45s ease both; }
 @keyframes jdin { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
@@ -699,8 +699,8 @@ section > h2, section > h2 .toggle { white-space: nowrap; }
     <div class="svc-g">
       <h3 class="svc-h">For design studios &amp; start-ups</h3>
       <p class="svc-sum">From strategy to delivery: brand, production and digital product.</p>
-      <div class="svc-tabs" role="group" aria-label="Skill sets"><button class="svc-tab" type="button" aria-expanded="false" aria-controls="bs-body">Brand strategy</button><button class="svc-tab" type="button" aria-expanded="false" aria-controls="pr-body">Production</button><button class="svc-tab" type="button" aria-expanded="false" aria-controls="dp-body">Digital product development</button></div>
-      <ul class="svc-list" id="bs-body" hidden>
+      <div class="svc-tabs" role="group" aria-label="Skill sets"><button class="svc-tab" type="button" aria-expanded="true" aria-controls="bs-body">Brand strategy</button><button class="svc-tab" type="button" aria-expanded="false" aria-controls="pr-body">Production</button><button class="svc-tab" type="button" aria-expanded="false" aria-controls="dp-body">Digital product development</button></div>
+      <ul class="svc-list" id="bs-body">
         <li><span class="svc-st">What makes the brand different</span><span class="svc-d">The real reason people choose the brand.</span><span class="pins"><span class="pin">UVP</span><span class="pin">Product–market fit</span></span></li>
         <li><span class="svc-st">The competitive landscape</span><span class="svc-d">Who’s out there, and where the open space is.</span><span class="pins"><span class="pin">Competitor audit</span><span class="pin">Positioning map</span><span class="pin">Brand territories</span></span></li>
         <li><span class="svc-st">Who buys and why</span><span class="svc-d">Followers vs clients, and every step to a sale.</span><span class="pins"><span class="pin">CJM</span><span class="pin">Personas</span><span class="pin">Buyer psychology</span></span></li>
@@ -722,8 +722,8 @@ section > h2, section > h2 .toggle { white-space: nowrap; }
     <div class="svc-g">
       <h3 class="svc-h">For creators &amp; influencers</h3>
       <p class="svc-sum">For creators ready to turn an audience into a business.</p>
-      <div class="svc-tabs" role="group" aria-label="Skill sets"><button class="svc-tab" type="button" aria-expanded="false" aria-controls="cb-body">Brand &amp; product</button><button class="svc-tab" type="button" aria-expanded="false" aria-controls="cc-body">Content &amp; campaigns</button><button class="svc-tab" type="button" aria-expanded="false" aria-controls="cf-body">Funnels &amp; metrics</button></div>
-      <ul class="svc-list" id="cb-body" hidden>
+      <div class="svc-tabs" role="group" aria-label="Skill sets"><button class="svc-tab" type="button" aria-expanded="true" aria-controls="cb-body">Brand &amp; product</button><button class="svc-tab" type="button" aria-expanded="false" aria-controls="cc-body">Content &amp; campaigns</button><button class="svc-tab" type="button" aria-expanded="false" aria-controls="cf-body">Funnels &amp; metrics</button></div>
+      <ul class="svc-list" id="cb-body">
         <li><span class="svc-st">Your real brand</span><span class="svc-d">What makes you different, and worth paying for.</span><span class="pins"><span class="pin">Monetisation</span><span class="pin">Niche</span><span class="pin">UVP</span></span></li>
         <li><span class="svc-st">Your product</span><span class="svc-d">Shaped, tested with your audience and launched.</span><span class="pins"><span class="pin">Courses</span><span class="pin">Lectures</span><span class="pin">Apps</span><span class="pin">Programmes</span></span></li>
       </ul>
@@ -740,41 +740,41 @@ section > h2, section > h2 .toggle { white-space: nowrap; }
 </section>
 
 <section id="work">
-  <h2><button class="toggle" type="button" id="work-btn" aria-expanded="false" aria-controls="work-body"><span>Work</span><span class="sign" aria-hidden="true">+</span></button></h2>
-  <div class="rows" id="work-body" hidden>
+  <h2><button class="toggle" type="button" id="work-btn" aria-expanded="true" aria-controls="work-body"><span>Work</span><span class="sign" aria-hidden="true">+</span></button></h2>
+  <div class="rows" id="work-body">
     <div class="row">
       <span class="when">2026 – Now</span>
-      <button class="role" type="button" aria-expanded="false" aria-controls="jd1">Creative Producer &amp; Brand Strategist</button>
+      <button class="role" type="button" aria-expanded="false" aria-controls="jd1">Creative Producer &amp; Brand Strategist <span class="jsign" aria-hidden="true">+</span></button>
       <span class="where">Studiogusto©, Perugia</span>
       <p id="jd1" class="jd" hidden>End-to-end creative production for Italian and international clients: brand research, positioning, strategy and execution across branding and social media.</p>
     </div>
     <div class="row">
       <span class="when">2025 – Now</span>
-      <button class="role" type="button" aria-expanded="false" aria-controls="jd2">Creative Producer</button>
+      <button class="role" type="button" aria-expanded="false" aria-controls="jd2">Creative Producer <span class="jsign" aria-hidden="true">+</span></button>
       <span class="where">Freelance, working with creators</span>
       <p id="jd2" class="jd" hidden>Research, funnels, service, product and content strategy for creators and founders, including Hanna Gets Hired (130K+ audience) and Leyla Nees.</p>
     </div>
     <div class="row">
       <span class="when">2022 – 2025</span>
-      <button class="role" type="button" aria-expanded="false" aria-controls="jd3">Designer &amp; Production Director</button>
+      <button class="role" type="button" aria-expanded="false" aria-controls="jd3">Designer &amp; Production Director <span class="jsign" aria-hidden="true">+</span></button>
       <span class="where">Humbleteam</span>
       <p id="jd3" class="jd" hidden>Ran the full production team: weekly goals, resourcing and assignments. Led presales, upsells, accounting and crisis management across 100+ startup clients, including the Y Combinator portfolio. Shaped client strategy through ICP research, A/B testing and UVP definition, with quality oversight across branding and marketing work.</p>
     </div>
     <div class="row">
       <span class="when">2020 – 2022</span>
-      <button class="role" type="button" aria-expanded="false" aria-controls="jd4">Designer &amp; Product Lead</button>
+      <button class="role" type="button" aria-expanded="false" aria-controls="jd4">Designer &amp; Product Lead <span class="jsign" aria-hidden="true">+</span></button>
       <span class="where">Atomenergo</span>
       <p id="jd4" class="jd" hidden>Usability research and testing, UX/UI design, strategic design direction and dev team grooming.</p>
     </div>
     <div class="row">
       <span class="when">2019 – 2020</span>
-      <button class="role" type="button" aria-expanded="false" aria-controls="jd5">Designer &amp; CX Specialist</button>
+      <button class="role" type="button" aria-expanded="false" aria-controls="jd5">Designer &amp; CX Specialist <span class="jsign" aria-hidden="true">+</span></button>
       <span class="where">AIC Design©</span>
       <p id="jd5" class="jd" hidden>Original benchmarking, usability research and testing, client proposals and copywriting.</p>
     </div>
     <div class="row">
       <span class="when">2018 – 2019</span>
-      <button class="role" type="button" aria-expanded="false" aria-controls="jd6">Product &amp; UX Lead</button>
+      <button class="role" type="button" aria-expanded="false" aria-controls="jd6">Product &amp; UX Lead <span class="jsign" aria-hidden="true">+</span></button>
       <span class="where">Movemeon, London</span>
       <p id="jd6" class="jd" hidden>UX/UI design and development of the main product and its marketing assets.</p>
     </div>
